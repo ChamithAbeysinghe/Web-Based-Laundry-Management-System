@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LaundryPro - Jobs Management</title>
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/admin-dashboard.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body class="admin-dashboard-page">
+<!-- Background Effects -->
+<div class="bg-effects" aria-hidden="true">
+    <span class="orb orb-1"></span>
+    <span class="orb orb-2"></span>
+    <span class="orb orb-3"></span>
+    <span class="orb orb-4"></span>
+    <span class="mesh"></span>
+</div>
+
+<!-- Sidebar -->
+<div class="sidebar">
+    <div class="sidebar-header">
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="fas fa-tshirt"></i>
+            </div>
+            <span>LaundryPro</span>
+        </div>
+        <button class="sidebar-toggle" id="sidebarToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+    <div class="user-info">
+        <div class="avatar"><i class="fas fa-user-shield"></i></div>
+        <div class="user-details">
+            <h4>Admin Manager</h4>
+            <p class="position">System Administrator</p>
+        </div>
+    </div>
+    <nav class="sidebar-nav">
+        <ul>
+            <li>
+                <a href="admin-dashboard.html">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="admin-dashboard.html#customer-management">
+                    <i class="fas fa-users"></i>
+                    <span>Customer Management</span>
+                </a>
+            </li>
+            <li>
+                <a href="admin-dashboard.html#staff-management">
+                    <i class="fas fa-user-cog"></i>
+                    <span>Staff Management</span>
+                </a>
+            </li>
+            <li>
+                <a href="admin-dashboard.html#order-management">
+                    <i class="fas fa-box-open"></i>
+                    <span>Order Management</span>
+                </a>
+            </li>
+            <li>
+                <a href="admin-dashboard.html#payments">
+                    <i class="fas fa-credit-card"></i>
+                    <span>Payments</span>
+                </a>
+            </li>
+            <li>
+                <a href="admin-dashboard.html#reviews">
+                    <i class="fas fa-star"></i>
+                    <span>Reviews</span>
+                </a>
+            </li>
+            <li class="active">
+                <a href="admin_jobs_management.html">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Jobs Management</span>
+                </a>
+            </li>
+            <li>
+                <a href="admin-dashboard.html#analytics">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Analytics & Reports</span>
+                </a>
+            </li>
+            <li>
+                <a href="admin-dashboard.html#settings">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+            </li>
+            <li>
+                <a href="login.html">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+<!-- Main Content -->
+<div class="main-content">
+
+    <!-- Tabs -->
+    <div class="section-tabs" style="display:flex; gap:0.5rem; margin-bottom:1rem;">
+        <a class="btn btn-primary" id="tabJobs" href="#jobs-management"><i class="fas fa-briefcase"></i> Jobs</a>
+        <a class="btn btn-outline" id="tabApplications" href="#applications-management"><i class="fas fa-file-signature"></i> Applied Jobs</a>
+    </div>
+
+    <!-- Available Jobs -->
+    <section id="jobs-management" class="management-section active">
+        <div class="section-header">
+            <h2>Available Jobs</h2>
+            <button class="btn btn-primary" onclick="openJobModal('Add New Job')">
+                <i class="fas fa-plus"></i> Add Job
+            </button>
+        </div>
+        <div class="search-filter">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="jobSearch" placeholder="Search jobs..." />
+            </div>
+            <div class="filter-group">
+                <select id="jobTypeFilter">
+                    <option value="all">All Types</option>
+                    <option>Full-Time</option>
+                    <option>Part-Time</option>
+                    <option>Contract</option>
+                    <option>Internship</option>
+                    <option>Temporary</option>
+                </select>
+                <select id="jobStatusFilter">
+                    <option value="all">All Status</option>
+                    <option value="active" selected>Active</option>
+                    <option value="inactive">Inactive</option>
+                </select>
+            </div>
+        </div>
+        <div class="table-container">
+            <table class="data-table">
+                <thead>
+                <tr>
+                    <th>Job ID</th>
+                    <th>Title</th>
+                    <th>Department</th>
+                    <th>Type</th>
+                    <th>Location</th>
+                    <th>Posted</th>
+                    <th>Status</th>
+                    <th style="width:160px;">Actions</th>
+                </tr>
+                </thead>
+                <tbody id="jobsTableBody">
+                <tr><td colspan="8">Loading...</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Applied Jobs -->
+    <section id="applications-management" class="management-section">
+        <div class="section-header">
+            <h2>Applied Jobs</h2>
+        </div>
+        <div class="search-filter">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="applicationSearch" placeholder="Search applications..." />
+            </div>
+            <div class="filter-group">
+                <select id="applicationStatusFilter">
+                    <option value="all">All Status</option>
+                    <option value="new" selected>New</option>
+                    <option value="reviewed">Reviewed</option>
+                    <option value="accepted">Accepted</option>
+                    <option value="rejected">Rejected</option>
+                </select>
+            </div>
+        </div>
+        <div class="table-container">
+            <table class="data-table">
+                <thead>
+                <tr>
+                    <th>App ID</th>
+                    <th>Job</th>
+                    <th>Customer</th>
+                    <th>Email</th>
+                    <th>Applied Date</th>
+                    <th>Status</th>
+                    <th style="width:220px;">Actions</th>
+                </tr>
+                </thead>
+                <tbody id="applicationsTableBody">
+                <tr><td colspan="7">Loading...</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</div>
+
+<!-- Modals -->
+<!-- Add/Edit Job Modal -->
+<div id="addJobModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 id="jobModalTitle">Add New Job</h2>
+            <button class="close-btn" onclick="closeModal('addJobModal')">&times;</button>
+        </div>
+        <form id="jobForm">
+            <input type="hidden" id="jobId" />
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="jobTitle">Job Title</label>
+                    <input type="text" id="jobTitle" required />
+                </div>
+                <div class="form-group">
+                    <label for="jobDepartment">Department</label>
+                    <input type="text" id="jobDepartment" placeholder="e.g., Operations" />
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="jobType">Employment Type</label>
+                    <select id="jobType" required>
+                        <option value="">Select Type</option>
+                        <option>Full-Time</option>
+                        <option>Part-Time</option>
+                        <option>Contract</option>
+                        <option>Internship</option>
+                        <option>Temporary</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="jobLocation">Location</label>
+                    <input type="text" id="jobLocation" placeholder="e.g., Downtown Facility" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="jobDescription">Description</label>
+                <textarea id="jobDescription" rows="5" placeholder="Role responsibilities, requirements, etc."></textarea>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="jobActive">Status</label>
+                    <select id="jobActive">
+                        <option value="1" selected>Active</option>
+                        <option value="0">Inactive</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="jobExpiry">Expires At</label>
+                    <input type="date" id="jobExpiry" />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline" onclick="closeModal('addJobModal')">Cancel</button>
+                <button type="submit" class="btn btn-primary">Save Job</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Review Application Modal -->
+<div id="reviewApplicationModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Review Application</h2>
+            <button class="close-btn" onclick="closeModal('reviewApplicationModal')">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div class="summary-row">
+                <div class="summary-label">Applicant:</div>
+                <div class="summary-value" id="applicantName"></div>
+            </div>
+            <div class="summary-row">
+                <div class="summary-label">Email:</div>
+                <div class="summary-value" id="applicantEmail"></div>
+            </div>
+            <div class="summary-row">
+                <div class="summary-label">Job:</div>
+                <div class="summary-value" id="applicationJob"></div>
+            </div>
+            <div class="summary-row">
+                <div class="summary-label">Applied Date:</div>
+                <div class="summary-value" id="applicationDate"></div>
+            </div>
+            <div class="form-group" style="margin-top:1rem;">
+                <label for="applicationStatusSelect">Status</label>
+                <select id="applicationStatusSelect">
+                    <option value="new">New</option>
+                    <option value="reviewed">Reviewed</option>
+                    <option value="accepted">Accepted</option>
+                    <option value="rejected">Rejected</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="applicationNotes">Notes</label>
+                <textarea id="applicationNotes" rows="4" placeholder="Optional notes..."></textarea>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-outline" onclick="closeModal('reviewApplicationModal')">Close</button>
+            <button class="btn btn-primary" id="saveApplicationStatusBtn"><i class="fas fa-save"></i> Save</button>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Confirmation Modal -->
+<div id="deleteModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Confirm Deletion</h2>
+            <button class="close-btn" onclick="closeModal('deleteModal')">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div class="warning-icon"><i class="fas fa-exclamation-triangle"></i></div>
+            <p>Are you sure you want to delete <strong id="deleteItemName"></strong>?</p>
+            <p class="warning-text">This action cannot be undone.</p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline" onclick="closeModal('deleteModal')">Cancel</button>
+            <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Delete</button>
+        </div>
+    </div>
+</div>
+
+<script src="js/auth.js"></script>
+<script src="js/job_management_dashboard.js"></script>
+</body>
+</html>

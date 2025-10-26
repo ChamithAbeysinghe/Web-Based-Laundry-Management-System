@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LaundryPro - Staff Dashboard</title>
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <!-- Global site styles to match index page -->
+    <link rel="stylesheet" href="css/index.css" />
+    <!-- External CSS (overrides where needed) -->
+    <link rel="stylesheet" href="css/staff-dashboard.css" />
+    <!-- Modern notifications styles -->
+    <link rel="stylesheet" href="css/notifications.css" />
+</head>
+<body class="staff-dashboard-page">
+
+<!-- Background Effects -->
+<div class="bg-effects" aria-hidden="true">
+    <span class="orb orb-1"></span>
+    <span class="orb orb-2"></span>
+    <span class="orb orb-3"></span>
+    <span class="orb orb-4"></span>
+    <span class="mesh"></span>
+</div>
+
+<!-- Mobile Header -->
+<div class="mobile-header">
+    <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+    <div class="logo"><i class="fas fa-tshirt"></i><span>LaundryPro</span></div>
+    <div>
+        <button class="notification-btn" id="notificationBtnMobile">
+            <i class="fas fa-bell"></i>
+            <span class="notification-badge" id="notificationBadgeMobile">0</span>
+        </button>
+    </div>
+</div>
+
+<!-- Sidebar -->
+<aside class="sidebar" id="sidebar">
+    <div class="logo"><i class="fas fa-tshirt"></i> LaundryPro</div>
+    <div class="user-info">
+        <div class="avatar"><i class="fas fa-user-cog"></i></div>
+        <h4 id="staff-name">Alex Hartman</h4>
+        <p id="staff-position">Laundry Specialist</p>
+    </div>
+    <nav class="sidebar-nav">
+        <a href="#" class="nav-item active" data-section="dashboard"><i class="fas fa-tasks"></i>Processing Queue</a>
+        <a href="#" class="nav-item" data-section="order-tracking"><i class="fas fa-search"></i>Order Tracking</a>
+        <a href="#" class="nav-item" data-section="pickup-delivery"><i class="fas fa-truck-fast"></i>Dispatch Queue</a>
+        <a href="#" class="nav-item" data-section="work-history"><i class="fas fa-history"></i>Work History</a>
+        <a href="#" class="nav-item" data-section="settings"><i class="fas fa-cog"></i>Settings</a>
+        <a href="login.html" id="logoutLink" class="nav-item"><i class="fas fa-sign-out-alt"></i>Logout</a>
+    </nav>
+</aside>
+
+<!-- Overlay for notifications dropdown -->
+<div id="notification-overlay"></div>
+
+<!-- Main Content -->
+<main class="main-content">
+
+    <!-- Topbar actions (desktop) -->
+    <div class="topbar-actions">
+        <button class="notification-btn" id="notificationBtn" aria-label="Open notifications">
+            <i class="fas fa-bell"></i>
+            <span class="notification-badge" id="notificationBadge">0</span>
+        </button>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="notificationToast" class="notification-toast">
+        <div class="notification-toast-content">
+            <div class="notification-toast-icon">
+                <i class="fas fa-bell"></i>
+            </div>
+            <div class="notification-toast-message">
+                <p id="notificationToastMessage">New order placed!</p>
+            </div>
+            <button id="closeToastBtn" class="btn-close-toast"><i class="fas fa-times"></i></button>
+        </div>
+    </div>
+
+    <!-- Hero Card -->
+    <section class="dashboard-hero">
+        <h1 id="page-title">Processing Queue</h1>
+        <p id="welcome-message">Welcome back, Alex! Here are your orders to process.</p>
+    </section>
+
+    <!-- Main Sections Wrapper -->
+    <div class="sections-wrapper">
+        <!-- Dashboard / Processing Section -->
+        <div id="dashboard-section" class="dashboard-section active">
+            <section class="quick-stats" id="quick-stats-container">
+                <div class="stat-card stat-card--processing">
+                    <div class="stat-icon"><i class="fas fa-sync-alt"></i></div>
+                    <div class="stat-info">
+                        <div class="stat-header"><span class="chip chip--processing"><i class="fas fa-industry" aria-hidden="true"></i> In Plant</span></div>
+                        <h3 id="processing-count">0</h3>
+                        <p>My Processing Tasks</p>
+                        <span class="stat-foot">Live</span>
+                    </div>
+                </div>
+                <div class="stat-card stat-card--available">
+                    <div class="stat-icon"><i class="fas fa-tags"></i></div>
+                    <div class="stat-info">
+                        <div class="stat-header"><span class="chip chip--available"><i class="fas fa-bolt" aria-hidden="true"></i> Open</span></div>
+                        <h3 id="available-count">0</h3>
+                        <p>Available to Claim</p>
+                        <span class="stat-foot">Updated</span>
+                    </div>
+                </div>
+                <div class="stat-card stat-card--dispatch">
+                    <div class="stat-icon"><i class="fas fa-truck-fast"></i></div>
+                    <div class="stat-info">
+                        <div class="stat-header"><span class="chip chip--dispatch"><i class="fas fa-route" aria-hidden="true"></i> Dispatch</span></div>
+                        <h3 id="dispatch-count">0</h3>
+                        <p>Ready for Dispatch</p>
+                        <span class="stat-foot">Now</span>
+                    </div>
+                </div>
+            </section>
+            <div class="card"><div class="card-header"><h2>My Assigned Processing Orders</h2></div><div class="card-body" id="processing-orders-container"></div></div>
+        </div>
+
+        <!-- Order Tracking Section -->
+        <div id="order-tracking-section" class="dashboard-section">
+            <div class="card"><div class="card-header"><h2>Update Order Milestone</h2></div><div class="card-body"><div class="search-form"><label><strong>Enter Order ID to Manage</strong></label><input type="number" placeholder="e.g. 1001" class="form-input" id="orderSearchInput"/><button class="btn btn-primary" id="searchOrderBtn"><i class="fas fa-search"></i> Search</button></div><div id="orderSearchResult" class="search-result"></div></div></div>
+            <div class="card"><div class="card-header"><h2>Available Orders for Pickup</h2></div><div class="card-body" id="unassigned-orders-container"></div></div>
+        </div>
+
+        <!-- Dispatch Queue Section -->
+        <div id="pickup-delivery-section" class="dashboard-section">
+            <div class="card"><div class="card-header"><h2>Orders Ready for Dispatch</h2></div><div class="card-body" id="dispatch-container"></div></div>
+        </div>
+
+        <!-- Work History Section -->
+        <div id="work-history-section" class="dashboard-section">
+            <div class="card">
+                <div class="card-header"><h2>Completed Order History</h2></div>
+                <!-- The new container for history items -->
+                <div class="card-body" id="work-history-container"></div>
+            </div>
+        </div>
+
+        <!-- Settings Section -->
+        <div id="settings-section" class="dashboard-section">
+            <div class="settings-grid">
+                <!-- Profile Card -->
+                <div class="card settings-card">
+                    <div class="card-header settings-card-header">
+                        <div class="header-left">
+                            <div class="header-icon"><i class="fas fa-user-gear"></i></div>
+                            <div>
+                                <h2>Personal Information</h2>
+                                <p class="sub">Update your profile details and how your name appears</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <form id="profile-form" class="settings-form">
+                            <div class="form-row two-col">
+                                <div class="input-group">
+                                    <label for="settings-first-name">First Name</label>
+                                    <input id="settings-first-name" type="text" class="form-input" placeholder="First name" required />
+                                </div>
+                                <div class="input-group">
+                                    <label for="settings-last-name">Last Name</label>
+                                    <input id="settings-last-name" type="text" class="form-input" placeholder="Last name" required />
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button id="save-profile-btn" type="submit" class="btn btn-primary">
+                                    <i class="fas fa-save"></i> Save Changes
+                                </button>
+                                <span id="profile-save-msg" class="form-msg" style="display:none;"></span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Password Card -->
+                <div class="card settings-card">
+                    <div class="card-header settings-card-header">
+                        <div class="header-left">
+                            <div class="header-icon"><i class="fas fa-lock"></i></div>
+                            <div>
+                                <h2>Change Password</h2>
+                                <p class="sub">Use a strong password with at least 8 characters</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <form id="password-form" class="settings-form">
+                            <div class="form-row">
+                                <div class="input-group">
+                                    <label for="current-password">Current Password</label>
+                                    <input id="current-password" type="password" class="form-input" placeholder="Current password" required />
+                                </div>
+                            </div>
+                            <div class="form-row two-col">
+                                <div class="input-group">
+                                    <label for="new-password">New Password</label>
+                                    <input id="new-password" type="password" class="form-input" placeholder="At least 8 characters" minlength="8" required />
+                                </div>
+                                <div class="input-group">
+                                    <label for="confirm-password">Confirm New Password</label>
+                                    <input id="confirm-password" type="password" class="form-input" placeholder="Re-enter new password" minlength="8" required />
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button id="save-password-btn" type="submit" class="btn btn-primary">
+                                    <i class="fas fa-check-circle"></i> Update Password
+                                </button>
+                                <span id="password-save-msg" class="form-msg" style="display:none;"></span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Scroll to Top Button -->
+<button id="scrollTopBtn" class="scroll-top" aria-label="Scroll to top">
+    <i class="fas fa-arrow-up" aria-hidden="true"></i>
+</button>
+
+<!-- Scripts -->
+<script src="js/auth.js"></script>
+<script src="js/index.js" defer></script>
+<script src="js/staff-dashboard.js"></script>
+<script src="js/notifications.js"></script>
+</body>
+</html>

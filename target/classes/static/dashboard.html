@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>LaundryPro - Customer Dashboard</title>
+    <link rel="stylesheet" href="css/dashboard.css"/>
+    <link rel="stylesheet" href="css/notifications.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="dashboard-page">
+
+  <!-- Background Effects -->
+  <div class="bg-effects" aria-hidden="true">
+      <span class="orb orb-1"></span>
+      <span class="orb orb-2"></span>
+      <span class="orb orb-3"></span>
+      <span class="orb orb-4"></span>
+      <span class="mesh"></span>
+  </div>
+
+<!-- Mobile Header -->
+<header class="mobile-header">
+    <button class="menu-toggle" aria-label="Toggle menu">
+        <i class="fas fa-bars"></i>
+    </button>
+    <div class="logo"><i class="fas fa-tshirt"></i> LaundryPro</div>
+    <div class="user-avatar-mobile">
+        <button class="notification-btn" id="notificationBtnMobile" aria-label="Notifications">
+            <i class="fas fa-bell"></i>
+            <span class="notification-badge" id="notificationBadgeMobile">0</span>
+        </button>
+    </div>
+</header>
+<div id="sidebarOverlay" class="sidebar-overlay" aria-hidden="true"></div>
+
+<!-- Overlay for notifications dropdown -->
+<div id="notification-overlay"></div>
+
+<!-- Order Modal -->
+<div class="modal" id="orderModal">
+    <div class="modal-content order-card">
+        <div class="modal-header">
+            <h2 id="orderModalTitle"><i class="fas fa-clipboard-list"></i> Place New Order</h2>
+            <button class="close-modal" aria-label="Close modal">&times;</button>
+        </div>
+
+        <div class="modal-body">
+            <!-- order form -->
+            <form class="order-form">
+                <!-- Service Section -->
+                <div class="form-section">
+                    <h3><i class="fas fa-basket-shopping"></i> Select Service Type</h3>
+                    <div class="service-types">
+                        <div class="service-type active" data-type="wash-fold">
+                            <i class="fas fa-tshirt"></i>
+                            <span>Wash & Fold</span>
+                        </div>
+                        <div class="service-type" data-type="dry-clean">
+                            <i class="fas fa-soap"></i>
+                            <span>Dry Cleaning</span>
+                        </div>
+                        <div class="service-type" data-type="linens">
+                            <i class="fas fa-bed"></i>
+                            <span>Home Linens</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add Items -->
+                <div class="form-section">
+                    <h3><i class="fas fa-plus-circle"></i> Add Items</h3>
+                    <div class="item-selection">
+                        <div class="select-wrapper">
+                            <label for="itemSelect">Choose Item</label>
+                            <select id="itemSelect"><option value="">Select an item</option></select>
+                        </div>
+
+                        <div class="quantity-control">
+                            <label for="itemQuantity">Quantity:</label>
+                            <div class="quantity-input">
+                                <button class="quantity-btn minus" type="button">-</button>
+                                <input type="number" id="itemQuantity" min="1" value="1">
+                                <button class="quantity-btn plus" type="button">+</button>
+                            </div>
+                        </div>
+
+                        <button id="addItemBtn" class="btn btn-primary" type="button">+ Add</button>
+                    </div>
+                </div>
+
+                <!-- Order Items -->
+                <div class="form-section">
+                    <h3><i class="fas fa-list-check"></i> Your Order Items</h3>
+                    <div class="order-items-container">
+                        <table class="order-items-table">
+                            <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Price</th>
+                                <th>Qty</th>
+                                <th>Total</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody id="orderItemsList">
+                            <tr class="empty-message"><td colspan="5">No items added yet</td></tr>
+                            </tbody>
+                            <tfoot>
+                            <tr>
+                                <td colspan="3" class="total-label">Subtotal</td>
+                                <td id="subtotalAmount">$0.00</td><td></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" class="total-label" id="taxLabel">Tax (8%)</td>
+                                <td id="taxAmount">$0.00</td><td></td>
+                            </tr>
+                            <tr class="grand-total">
+                                <td colspan="3" class="total-label">Total</td>
+                                <td id="totalAmount">$0.00</td><td></td>
+                            </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Special Instructions -->
+                <div class="form-section">
+                    <h3><i class="fas fa-comment-dots"></i> Special Instructions</h3>
+                    <textarea id="specialInstructions" placeholder="e.g. Please use softener, deliver before evening"></textarea>
+                </div>
+            </form>
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn btn-secondary" id="cancelOrderBtn" type="button">
+                <i class="fas fa-times"></i> Cancel
+            </button>
+            <button class="btn btn-primary" id="submitOrderBtn" type="button" disabled>
+                <i class="fas fa-check-circle"></i> Place Order
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Sidebar -->
+<aside class="sidebar">
+    <div class="sidebar-header">
+        <div class="logo"><i class="fas fa-tshirt"></i> LaundryPro</div>
+    </div>
+    <div class="user-info">
+        <div class="avatar"><i class="fas fa-user"></i></div>
+        <h4 id="user-name">Loading...</h4>
+        <p class="membership" id="membership-status">Loading...</p>
+    </div>
+    <nav>
+        <a href="index.html"><i class="fas fa-home"></i> Home</a>
+        <a class="active" href="#"><i class="fas fa-home"></i> Dashboard</a>
+        <a href="#" id="placeOrderLink"><i class="fas fa-plus-circle"></i> Place Order</a>
+        <a href="#"><i class="fas fa-box-open"></i> My Orders</a>
+        <a href="#" id="myApplicationsLink"><i class="fas fa-briefcase"></i> My Applications</a>
+        <a href="order-tracking.html"><i class="fas fa-truck"></i> Track Orders</a>
+        <a href="Payment.html"><i class="fas fa-credit-card"></i> Payments</a>
+        <a href="#"><i class="fas fa-history"></i> Order History</a>
+        <a href="#"><i class="fas fa-cog"></i> Settings</a>
+        <a href="login.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    </nav>
+</aside>
+
+<!-- Main -->
+<main class="main-content">
+    <div class="topbar-actions" style="display:flex;justify-content:flex-end;margin-bottom:8px;">
+        <button class="notification-btn" id="notificationBtn" aria-label="Open notifications">
+            <i class="fas fa-bell"></i>
+            <span class="notification-badge" id="notificationBadge">0</span>
+        </button>
+    </div>
+    <!-- Welcome -->
+    <section class="welcome-banner">
+        <h1 id="welcome-message">Welcome back! 👋</h1>
+        <p id="welcome-subtitle">Loading your laundry information...</p>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats-grid" id="stats-container"></section>
+
+    <!-- Dashboard -->
+    <div class="dashboard-grid">
+        <div class="left">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Recent Orders</h2>
+                    <a href="#">View All <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="order-list" id="orders-container"></div>
+            </div>
+        </div>
+        <div class="right">
+            <div class="card">
+                <div class="card-header"><h2>Service Stats</h2></div>
+                <div class="chart-wrapper"><canvas id="serviceChart"></canvas></div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script src="js/auth.js"></script>
+<script src="js/dashboard.js"></script>
+<script src="js/customer-notifications.js"></script>
+</body>
+</html>

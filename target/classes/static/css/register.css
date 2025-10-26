@@ -1,0 +1,284 @@
+/* ================================
+   Register Page - Modern Glass UI
+   Matches LaundryPro branding
+   ================================ */
+
+:root {
+  --lp-primary: #0369a1;
+  --lp-primary-2: #0284c7;
+  --lp-bg-1: #f0f9ff;
+  --lp-bg-2: #e0f2fe;
+  --lp-text: #0f172a;
+  --lp-muted: #64748b;
+  --lp-white: 255,255,255;
+}
+
+* { box-sizing: border-box; }
+
+.auth-hero {
+  position: relative;
+  min-height: calc(100vh - 80px);
+  padding: 3rem 1rem;
+  background: radial-gradient(1200px 600px at -10% -10%, rgba(3,105,161,0.15), transparent 60%),
+              radial-gradient(900px 500px at 110% 10%, rgba(2,132,199,0.15), transparent 60%),
+              linear-gradient(135deg, var(--lp-bg-1), var(--lp-bg-2));
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.decor {
+  position: absolute;
+  filter: blur(60px);
+  opacity: 0.45;
+  pointer-events: none;
+  transform: translateZ(0);
+}
+.decor-1 { width: 420px; height: 420px; background: #7dd3fc; top: -80px; left: -80px; border-radius: 50%; }
+.decor-2 { width: 360px; height: 360px; background: #38bdf8; bottom: -120px; right: -60px; border-radius: 50%; }
+.decor-3 { width: 260px; height: 260px; background: #93c5fd; bottom: 15%; left: 10%; border-radius: 50%; }
+
+.auth-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 2rem;
+  width: min(1100px, 95%);
+  align-items: stretch;
+}
+
+.brand-panel {
+  background: rgba(var(--lp-white), 0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 24px;
+  padding: 2.2rem;
+  box-shadow: 0 30px 60px rgba(2, 132, 199, 0.15);
+  border: 1px solid rgba(var(--lp-white), 0.5);
+}
+
+/* Match login brand badge */
+.brand-badge {
+  width: 72px; height: 72px; border-radius: 18px;
+  display: grid; place-items: center;
+  background: linear-gradient(135deg, var(--lp-primary), var(--lp-primary-2));
+  color: white; font-size: 1.75rem; margin-bottom: 1rem;
+  box-shadow: 0 12px 28px rgba(3,105,161,0.35);
+}
+/* Keep alt in case used elsewhere */
+/* Match login brand badge (blue) */
+.brand-badge {
+  width: 72px; height: 72px; border-radius: 18px;
+  display: grid; place-items: center;
+  background: linear-gradient(135deg, var(--lp-primary), var(--lp-primary-2));
+  color: white; font-size: 1.75rem; margin-bottom: 1rem;
+  box-shadow: 0 12px 28px rgba(3,105,161,0.35);
+}
+.brand-badge.alt {
+  width: 72px; height: 72px; border-radius: 18px;
+  display: grid; place-items: center;
+  background: linear-gradient(135deg, #22c55e, #10b981);
+  color: white; font-size: 1.75rem; margin-bottom: 1rem;
+  box-shadow: 0 12px 28px rgba(16,185,129,0.35);
+}
+
+/* Match login avatar (blue) */
+.avatar {
+  width: 64px; height: 64px; border-radius: 16px;
+  display: grid; place-items: center; margin: 0 auto 0.8rem;
+  color: white; font-size: 1.5rem;
+  background: linear-gradient(135deg, var(--lp-primary), var(--lp-primary-2));
+  box-shadow: 0 10px 22px rgba(3,105,161,0.35);
+}
+.brand-panel h1 {
+  margin: 0.25rem 0 0.5rem; font-size: clamp(1.6rem, 3vw, 2.25rem);
+  background: linear-gradient(135deg, var(--lp-primary), var(--lp-primary-2));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+
+.brand-panel p { color: var(--lp-muted); margin-bottom: 1rem; }
+
+.brand-points { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.5rem; }
+.brand-points li { color: var(--lp-text); display: flex; align-items: center; gap: 0.6rem; font-weight: 600; }
+.brand-points i { color: var(--lp-primary); }
+
+.glass-card {
+  position: relative;
+  border-radius: 24px;
+  padding: 2.2rem;
+  background: rgba(var(--lp-white), 0.22);
+  border: 1px solid rgba(var(--lp-white), 0.55);
+  box-shadow: 0 25px 60px rgba(15, 23, 42, 0.18);
+  backdrop-filter: blur(16px) saturate(120%);
+  -webkit-backdrop-filter: blur(16px) saturate(120%);
+  overflow: hidden;
+}
+.glass-card::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0.25), transparent 30%);
+  pointer-events: none;
+}
+
+.card-header { text-align: center; margin-bottom: 1.25rem; }
+/* Match login avatar gradient */
+.avatar {
+  width: 64px; height: 64px; border-radius: 16px;
+  display: grid; place-items: center; margin: 0 auto 0.8rem;
+  color: white; font-size: 1.5rem;
+  background: linear-gradient(135deg, var(--lp-primary), var(--lp-primary-2));
+  box-shadow: 0 10px 22px rgba(3,105,161,0.35);
+}
+.avatar.alt {
+  width: 64px; height: 64px; border-radius: 16px;
+  display: grid; place-items: center; margin: 0 auto 0.8rem;
+  color: white; font-size: 1.5rem;
+  background: linear-gradient(135deg, #22c55e, #10b981);
+  box-shadow: 0 10px 22px rgba(16,185,129,0.35);
+}
+.card-header h2 {
+  margin: 0 0 0.25rem;
+  font-size: clamp(1.2rem, 2.5vw, 1.75rem);
+  color: var(--lp-text);
+}
+.card-header p { margin: 0; color: var(--lp-muted); }
+
+.auth-form { display: grid; gap: 0.9rem; }
+.input-row {
+  display: grid; grid-template-columns: auto 1fr auto; align-items: center;
+  gap: 0.75rem; background: rgba(255,255,255,0.85);
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  border-radius: 14px; padding: 0.85rem 1rem;
+  transition: box-shadow .25s ease, border-color .25s ease;
+}
+.input-row:focus-within {
+  border-color: rgba(3,105,161,0.55);
+  box-shadow: 0 0 0 4px rgba(3,105,161,0.18);
+}
+.input-row .icon { color: var(--lp-primary); font-size: 1.05rem; }
+.input-row input, .input-row select {
+  border: none; outline: none; background: transparent; font-size: 1rem; color: var(--lp-text);
+}
+.select-row { position: relative; }
+.select-row .chevron, .select-row .chev {
+  color: #64748b; pointer-events: none;
+}
+
+.peek {
+  border: none; background: transparent; cursor: pointer; color: #64748b;
+  padding: 0; font-size: 1.05rem;
+}
+.peek:hover { color: var(--lp-primary); }
+
+.btn-block { width: 100%; margin-top: 0.5rem; padding: 0.9rem 1rem; border-radius: 12px; font-size: 1.05rem; }
+
+.switch-auth { text-align: center; color: var(--lp-muted); margin-top: 0.8rem; }
+.switch-auth a { color: var(--lp-primary); font-weight: 700; text-decoration: none; }
+.switch-auth a:hover { text-decoration: underline; }
+
+/* Reveal utilities (match login/index) */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; will-change: opacity, transform; }
+.reveal.visible { opacity: 1; transform: none; }
+
+/* Load-time reveal (replayable) */
+.reveal-load {
+  opacity: 0;
+  transform: translateY(18px);
+  will-change: opacity, transform;
+}
+.reveal-load.run {
+  animation: fadeUp .6s ease forwards;
+  animation-delay: var(--delay, 0ms);
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Custom dropdown (Role) — modern, animated, and matched to input rows */
+.input-row.select-row {
+  min-height: 52px; /* align height with inputs */
+  position: relative;
+  /* Ensure dropdown sits above following elements like the Register button */
+  z-index: 30;
+}
+.role-dropdown-toggle {
+  -webkit-appearance: none; appearance: none;
+  border: none; background: transparent;
+  text-align: left; width: 100%; padding: 0;
+  font-size: 1rem; color: var(--lp-text);
+  display: grid; grid-template-columns: 1fr auto; align-items: center; gap: .5rem;
+  cursor: pointer;
+}
+.role-dropdown-toggle:hover #regRoleLabel { color: var(--lp-text); }
+.role-dropdown-toggle:focus { outline: none; }
+/* Focus ring is handled by .input-row:focus-within, but gently lift the label on focus */
+.input-row.select-row:focus-within #regRoleLabel { filter: brightness(1.02); }
+
+/* Chevron with rotation when open/focused */
+.select-row .chev {
+  color: #64748b; pointer-events: none; position: absolute; right: 12px; font-size: 0.95rem;
+  transition: transform .18s ease, color .18s ease; transform-origin: 50% 45%;
+  top: 50%; transform: translateY(-50%);
+}
+.role-dropdown-toggle[aria-expanded="true"] .chev { color: var(--lp-primary); transform: rotate(180deg); }
+.select-row:focus-within .chev { color: var(--lp-primary); transform: translateY(-50%) rotate(180deg); }
+
+/* Dropdown menu */
+.role-dropdown {
+  position: absolute; left: 48px; right: 36px; top: calc(100% + 10px);
+  list-style: none; margin: 0; padding: .4rem; z-index: 22;
+  background: #fff; border: 1px solid rgba(148, 163, 184, 0.35);
+  border-radius: 12px; box-shadow: 0 16px 36px rgba(15,23,42,.12);
+  max-height: 240px; overflow: auto;
+  /* Hidden state with smooth transition */
+  opacity: 0; transform: translateY(-6px) scale(.98);
+  transition: opacity .18s ease, transform .18s ease;
+  pointer-events: none;
+}
+.role-dropdown.open {
+  opacity: 1; transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+/* Menu options */
+.role-option {
+  padding: .6rem .6rem;
+  border-radius: 10px;
+  color: var(--lp-text);
+  display: flex; align-items: center; gap: .5rem;
+  cursor: pointer;
+  transition: background .12s ease, color .12s ease;
+}
+.role-option i { color: var(--lp-primary); opacity: .9; }
+.role-option:hover,
+.role-option:focus,
+.role-option:focus-visible {
+  background: rgba(3,105,161,.08);
+  outline: none;
+}
+.role-option:active { background: rgba(3,105,161,.12); }
+
+/* Button ripple effect on submit */
+.btn { position: relative; overflow: hidden; }
+.btn .ripple {
+  position: absolute; border-radius: 50%; transform: scale(0); pointer-events: none;
+  background: rgba(255,255,255,.45); animation: ripple .6s ease-out forwards; mix-blend-mode: screen;
+}
+@keyframes ripple { to { transform: scale(4); opacity: 0; } }
+
+@media (max-width: 960px) {
+  .auth-grid { grid-template-columns: 1fr; }
+  .brand-panel { order: 2; }
+  .glass-card { order: 1; }
+}
+
+/* Helper to hide rows reliably */
+.hidden-row {
+  display: none !important;
+}
+
+@media (max-width: 480px) {
+  .auth-hero { padding: 2rem 1rem; }
+  .brand-panel, .glass-card { padding: 1.4rem; border-radius: 18px; }
+  .btn-block { padding: 0.85rem; }
+}

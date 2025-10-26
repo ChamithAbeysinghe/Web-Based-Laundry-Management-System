@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register - LaundryPro</title>
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body class="body-auth">
+<!-- Background Effects to match index -->
+<div class="bg-effects" aria-hidden="true">
+    <span class="orb orb-1"></span>
+    <span class="orb orb-2"></span>
+    <span class="orb orb-3"></span>
+    <span class="orb orb-4"></span>
+    <span class="mesh"></span>
+</div>
+
+<!-- Header (Matches index.html for consistency) -->
+<header class="header-loading">
+    <div class="header-container">
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="fas fa-tshirt"></i>
+            </div>
+            <span>LaundryPro</span>
+        </div>
+        <nav class="nav-links">
+            <a href="index.html"><span>Home</span></a>
+            <a href="index.html#services"><span>Services</span></a>
+            <a href="index.html#pricing"><span>Pricing</span></a>
+            <a href="order-tracking.html"><span>Track Order</span></a>
+            <a href="index.html#reviews"><span>Reviews</span></a>
+            <a href="Job_application.html"><span>Careers</span></a>
+        </nav>
+        <div class="auth-buttons">
+            <a href="login.html" id="navLoginBtn" class="btn btn-outline">Login</a>
+            <a href="register.html" id="navRegisterBtn" class="btn btn-primary">Get Started</a>
+            <div id="navUserArea" class="nav-user" style="display:none; position:relative;">
+                <button id="navUserToggle" class="user-chip" aria-haspopup="true" aria-expanded="false">
+                    <span class="avatar-badge" id="navUserInitials">U</span>
+                    <span id="navUserName" class="user-name">Customer</span>
+                    <i class="fas fa-chevron-down chev" aria-hidden="true"></i>
+                </button>
+                <div id="navUserMenu" class="user-menu" role="menu" aria-label="Account menu">
+                    <a href="dashboard.html" class="dropdown-item" role="menuitem">
+                        <i class="fas fa-gauge-high" aria-hidden="true"></i> My Dashboard
+                    </a>
+                    <a href="javascript:void(0);" id="navLogoutBtn" class="dropdown-item" role="menuitem">
+                        <i class="fas fa-sign-out-alt" aria-hidden="true"></i> Sign out
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Auth BG -->
+<section class="auth-hero">
+    <div class="decor decor-1"></div>
+    <div class="decor decor-2"></div>
+    <div class="decor decor-3"></div>
+
+    <div class="auth-grid">
+        <!-- Left brand panel -->
+        <aside class="brand-panel reveal">
+            <div class="brand-badge alt">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+            </div>
+            <h1>Join LaundryPro</h1>
+            <p>Create your account to schedule pickups and earn rewards.</p>
+            <ul class="brand-points">
+                <li><i class="fa-solid fa-badge-check"></i> Secure & Trusted</li>
+                <li><i class="fa-solid fa-bolt"></i> Fast Turnaround</li>
+                <li><i class="fa-solid fa-recycle"></i> Planet-Friendly</li>
+            </ul>
+        </aside>
+
+        <!-- Right glass form for Registration -->
+        <main class="glass-card reveal" role="main">
+            <div class="card-header">
+                <div class="avatar alt"><i class="fa-solid fa-user-plus"></i></div>
+                <h2>Create your account</h2>
+                <p>It only takes a minute</p>
+            </div>
+
+            <form class="auth-form" id="registerForm" action="#" method="post" novalidate>
+                <div class="input-row">
+                    <span class="icon"><i class="fa-regular fa-user"></i></span>
+                    <input type="text" id="reg-firstname" name="firstname" placeholder="First Name" required />
+                </div>
+
+                <div class="input-row">
+                    <span class="icon"><i class="fa-regular fa-user"></i></span>
+                    <input type="text" id="reg-lastname" name="lastname" placeholder="Last Name" required />
+                </div>
+
+                <div class="input-row">
+                    <span class="icon"><i class="fa-regular fa-envelope"></i></span>
+                    <input type="email" id="reg-email" name="email" placeholder="Email address" required />
+                </div>
+
+                <div class="input-row" id="phone-row">
+                    <span class="icon"><i class="fa-solid fa-phone"></i></span>
+                    <input type="tel" id="reg-phone" name="phone" placeholder="Phone Number" />
+                </div>
+
+                <div class="input-row" id="address-row">
+                    <span class="icon"><i class="fa-solid fa-location-dot"></i></span>
+                    <input type="text" id="reg-address" name="address" placeholder="Address" />
+                </div>
+
+                <div class="input-row">
+                    <span class="icon"><i class="fa-solid fa-lock"></i></span>
+                    <input type="password" id="reg-password" name="password" placeholder="Password" required />
+                    <button type="button" class="peek" aria-label="Toggle password visibility">
+                        <i class="fa-regular fa-eye"></i>
+                    </button>
+                </div>
+
+                <div class="input-row select-row">
+                    <span class="icon"><i class="fa-solid fa-user-tag"></i></span>
+                    <!-- Hidden field used on submit -->
+                    <input type="hidden" id="reg-role" name="role" value="">
+                    <!-- Custom dropdown control (same as login) -->
+                    <button type="button" id="regRoleDropdownToggle" class="role-dropdown-toggle" aria-haspopup="listbox" aria-expanded="false">
+                        <span id="regRoleLabel">Select role</span>
+                        <i class="fa-solid fa-chevron-down chev" aria-hidden="true"></i>
+                    </button>
+                    <!-- Dropdown menu -->
+                    <ul id="regRoleDropdownMenu" class="role-dropdown" role="listbox" aria-label="Select role">
+                        <li class="role-option" data-value="customer" role="option">
+                            <i class="fa-regular fa-user"></i> Customer
+                        </li>
+                        <li class="role-option" data-value="staff" role="option">
+                            <i class="fa-solid fa-id-badge"></i> Staff
+                        </li>
+                    </ul>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">Register</button>
+                <p class="switch-auth">Already have an account? <a href="login.html">Log in</a></p>
+            </form>
+        </main>
+    </div>
+</section>
+
+<!-- Success Popup Modal -->
+<div id="successModal" class="modal-overlay" style="display: none;">
+    <div class="modal-box">
+        <div class="modal-icon">
+            <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none"/>
+                <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+            </svg>
+        </div>
+        <h2>Registration Complete!</h2>
+        <p>Your account has been created successfully. Welcome to LaundryPro!</p>
+        <button id="modalOkButton" class="btn btn-primary">OK</button>
+    </div>
+</div>
+
+<!-- Error Popup Modal -->
+<div id="errorModal" class="modal-overlay" style="display: none;">
+    <div class="modal-box">
+        <div class="modal-icon error">
+            <svg class="error-mark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                <circle class="error-circle" cx="26" cy="26" r="25" fill="none"/>
+                <path class="error-x-1" stroke-linecap="round" fill="none" d="M16 16 36 36"/>
+                <path class="error-x-2" stroke-linecap="round" fill="none" d="M36 16 16 36"/>
+            </svg>
+        </div>
+        <h2>Registration Failed</h2>
+        <p id="errorMessage">Please check the details and try again.</p>
+        <button id="errorTryAgainButton" class="btn btn-primary">Try Again</button>
+    </div>
+</div>
+
+<script src="js/register.js" defer></script>
+
+<!-- Animation Scripts -->
+<script>
+    window.onload = () => setTimeout(() => window.scrollTo(0, 0), 0);
+</script>
+
+<script>
+    (function() {
+        const header = document.querySelector('header');
+        if (!header) return;
+
+        const hasSeenAnimation = sessionStorage.getItem('hasSeenNavAnimation');
+
+        if (hasSeenAnimation) {
+            header.classList.remove('header-loading');
+        } else {
+            function cleanupAndSetFlag() {
+                header.classList.remove('header-loading');
+                sessionStorage.setItem('hasSeenNavAnimation', 'true');
+                header.removeEventListener('animationend', cleanupAndSetFlag);
+            }
+            header.addEventListener('animationend', cleanupAndSetFlag);
+        }
+
+        let lastScrollTop = 0;
+        const delta = 5;
+        const headerHeight = header.offsetHeight;
+
+        window.addEventListener('scroll', function() {
+            const st = window.pageYOffset || document.documentElement.scrollTop;
+            if (Math.abs(lastScrollTop - st) <= delta) return;
+
+            if (!header.classList.contains('header-loading')) {
+                if (st > lastScrollTop && st > headerHeight){
+                    header.classList.add('header-hidden');
+                } else {
+                    header.classList.remove('header-hidden');
+                }
+            }
+            lastScrollTop = st <= 0 ? 0 : st;
+        }, false);
+    })();
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const revealElements = document.querySelectorAll('.reveal');
+        if (!revealElements.length) return;
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    const delay = entry.target.dataset.delay || index * 100;
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, delay);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        revealElements.forEach((element, index) => {
+            element.dataset.delay = index * 150 + 500;
+            observer.observe(element);
+        });
+    });
+</script>
+</body>
+</html>

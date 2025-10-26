@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LaundryPro - Admin Dashboard</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/admin-dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="admin-dashboard-page">
+<!-- Background Effects -->
+<div class="bg-effects" aria-hidden="true">
+    <span class="orb orb-1"></span>
+    <span class="orb orb-2"></span>
+    <span class="orb orb-3"></span>
+    <span class="orb orb-4"></span>
+    <span class="mesh"></span>
+</div>
+
+<!-- Sidebar -->
+<div class="sidebar">
+    <div class="sidebar-header">
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="fas fa-tshirt"></i>
+            </div>
+            <span>LaundryPro</span>
+        </div>
+        <button class="sidebar-toggle" id="sidebarToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+    <div class="user-info">
+        <div class="avatar">
+            <i class="fas fa-user-shield"></i>
+        </div>
+        <div class="user-details">
+            <h4>Admin Manager</h4>
+            <p class="position">System Administrator</p>
+        </div>
+    </div>
+    <nav class="sidebar-nav">
+        <ul>
+            <li class="active">
+                <a href="admin-dashboard.html">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="#customer-management">
+                    <i class="fas fa-users"></i>
+                    <span>Customer Management</span>
+                </a>
+            </li>
+            <li>
+                <a href="#staff-management">
+                    <i class="fas fa-user-cog"></i>
+                    <span>Staff Management</span>
+                </a>
+            </li>
+            <li>
+                <a href="#order-management">
+                    <i class="fas fa-box-open"></i>
+                    <span>Order Management</span>
+                </a>
+            </li>
+            <li>
+                <a href="#payments">
+                    <i class="fas fa-credit-card"></i>
+                    <span>Payments</span>
+                </a>
+            </li>
+            <li>
+                <a href="#reviews">
+                    <i class="fas fa-star"></i>
+                    <span>Reviews</span>
+                </a>
+            </li>
+            <li>
+                <a href="#jobs-management">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Jobs Management</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#analytics">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Analytics & Reports</span>
+                </a>
+            </li>
+            <li>
+                <a href="#settings">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+            </li>
+            <li>
+                <a href="login.html">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+<!-- Main Content -->
+<div class="main-content">
+    <!-- Dashboard Section -->
+    <section id="dashboard" class="dashboard-section active">
+        <div class="section-header">
+            <div>
+                <h2>Dashboard</h2>
+                <p class="section-subtitle">Welcome back! Here's your comprehensive business overview.</p>
+            </div>
+        </div>
+        <!-- Quick Stats -->
+        <section class="quick-stats">
+            <div class="stat-card">
+                <div class="stat-icon bg-blue">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="stat-info">
+                    <h3>Total Customers</h3>
+                    <p class="stat-value">1,247</p>
+                    <p class="stat-sub">+12% from last month</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon bg-green">
+                    <i class="fas fa-user-cog"></i>
+                </div>
+                <div class="stat-info">
+                    <h3>Active Staff</h3>
+                    <p class="stat-value">18</p>
+                    <p class="stat-sub">2 open positions</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon bg-orange">
+                    <i class="fas fa-box-open"></i>
+                </div>
+                <div class="stat-info">
+                    <h3>Daily Orders</h3>
+                    <p class="stat-value">63</p>
+                    <p class="stat-sub">Today's volume</p>
+                </div>
+            </div>
+        </section>
+        <!-- Main Dashboard Content -->
+        <div class="dashboard-content">
+            <!-- Left Column -->
+            <div class="left-column">
+                <!-- Quick Actions -->
+                <div class="card quick-actions">
+                    <div class="card-header">
+                        <h2>Quick Actions</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="action-grid">
+                            <button class="action-btn" onclick="openModal('addCustomerModal')">
+                                <i class="fas fa-user-plus"></i>
+                                <span>Add Customer</span>
+                            </button>
+                            <button class="action-btn" onclick="openModal('addStaffModal')">
+                                <i class="fas fa-user-cog"></i>
+                                <span>Add Staff</span>
+                            </button>
+                            <button class="action-btn" onclick="openModal('addOrderModal')">
+                                <i class="fas fa-box-open"></i>
+                                <span>Create Order</span>
+                            </button>
+                            <button class="action-btn" onclick="openModal('settingsModal')">
+                                <i class="fas fa-cog"></i>
+                                <span>Settings</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Right Column -->
+            <div class="right-column">
+                <!-- System Status -->
+                <div class="card system-status">
+                    <div class="card-header">
+                        <h2>System Status</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="status-item healthy">
+                            <div class="status-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="status-info">
+                                <h3>Web Application</h3>
+                                <p>All systems operational</p>
+                            </div>
+                            <div class="status-value">100%</div>
+                        </div>
+                        <div class="status-item warning">
+                            <div class="status-icon">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                            <div class="status-info">
+                                <h3>Washing Machines</h3>
+                                <p>Maintenance needed on Machine #3</p>
+                            </div>
+                            <div class="status-value">75%</div>
+                        </div>
+                        <div class="status-item healthy">
+                            <div class="status-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="status-info">
+                                <h3>Delivery Fleet</h3>
+                                <p>All vehicles operational</p>
+                            </div>
+                            <div class="status-value">100%</div>
+                        </div>
+                        <div class="status-item healthy">
+                            <div class="status-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="status-info">
+                                <h3>Database</h3>
+                                <p>Healthy with backups</p>
+                            </div>
+                            <div class="status-value">100%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Customer Management Section -->
+    <section id="customer-management" class="customer-management-section">
+        <div class="section-header">
+            <h2>Customer Management</h2>
+            <p class="section-subtitle">Create and manage customers.</p>
+        </div>
+        <form id="createCustomerForm" class="customer-form">
+            <label for="customerName">Name:</label>
+            <input type="text" id="customerName" name="name" required>
+            <label for="customerEmail">Email:</label>
+            <input type="email" id="customerEmail" name="email" required>
+            <label for="customerPhone">Phone:</label>
+            <input type="text" id="customerPhone" name="phone" required>
+            <button type="submit">Create Customer</button>
+        </form>
+        <div id="customerFormMessage"></div>
+        <div class="table-container">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="customerTableBody">
+                    <tr><td colspan="5">Loading...</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <!-- Staff Management Section -->
+    <section id="staff-management" class="management-section">
+        <div class="section-header">
+            <h2>Staff Management</h2>
+            <button class="btn btn-primary" onclick="openModal('addStaffModal')">
+                <i class="fas fa-user-plus"></i> Add Staff
+            </button>
+        </div>
+        <div class="search-filter">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search staff..." id="staffSearch">
+            </div>
+            <div class="filter-group">
+                <select id="staffPositionFilter">
+                    <option value="all">All Positions</option>
+                    <option value="laundry">Laundry Technician</option>
+                    <option value="delivery">Delivery Driver</option>
+                    <option value="manager">Store Manager</option>
+                    <option value="supervisor">Shift Supervisor</option>
+                </select>
+            </div>
+        </div>
+        <div class="table-container">
+            <table class="data-table">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Position</th>
+                    <th>Status</th>
+                    <th>Joined</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody id="staffTableBody">
+                <tr><td colspan="8">Loading...</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <!-- Order Management Section -->
+    <section id="order-management" class="management-section">
+        <div class="section-header">
+            <h2>Order Management</h2>
+        </div>
+        <div class="search-filter">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search orders..." id="orderSearch">
+            </div>
+            <div class="filter-group">
+                <select id="orderStatusFilter">
+                    <option value="all">All Status</option>
+                    <option value="order placed">Order Placed</option>
+                    <option value="pickup scheduled">Pickup Scheduled</option>
+                    <option value="pickup completed">Pickup Completed</option>
+                    <option value="washing">Washing</option>
+                    <option value="drying">Drying</option>
+                    <option value="ironing">Ironing</option>
+                    <option value="quality check">Quality Check</option>
+                    <option value="ready for delivery">Ready for Delivery</option>
+                    <option value="delivered">Delivered</option>
+                    <option value="cancelled">Cancelled</option>
+                </select>
+            </div>
+        </div>
+        <div class="order-grid" id="orderGrid">
+            <!-- Order cards will be dynamically inserted here -->
+        </div>
+    </section>
+    <!-- Payments Management Section -->
+    <section id="payments" class="management-section">
+        <div class="section-header">
+            <h2>Payments</h2>
+        </div>
+        <div class="card" id="taxSettingsPanel" style="margin-bottom: 1rem;">
+            <div class="card-header">
+                <h3>Tax Settings</h3>
+            </div>
+            <div class="card-body" style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap;">
+                <div>
+                    <label for="taxRateInput" style="display:block;margin-bottom:.25rem;">Order Tax Rate (%)</label>
+                    <input type="number" id="taxRateInput" min="0" max="100" step="0.01" placeholder="8.00" style="width:140px;">
+                </div>
+                <button class="btn btn-primary" id="saveTaxRateBtn">
+                    <i class="fas fa-save"></i> Save Tax Rate
+                </button>
+                <div class="text-muted" id="taxRateCurrentDisplay" style="margin-left:auto;">
+                    Current: <strong id="taxRateDisplay">—</strong>
+                </div>
+            </div>
+        </div>
+        <div class="table-container">
+            <table class="data-table">
+                <thead>
+                <tr>
+                    <th>Payment ID</th>
+                    <th>Order ID</th>
+                    <th>Customer</th>
+                    <th>Amount</th>
+                    <th>Method</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody id="paymentsTableBody">
+                <tr><td colspan="6">Loading...</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <!-- Reviews Management Section -->
+    <section id="reviews" class="management-section">
+        <div class="section-header">
+            <h2>Reviews</h2>
+        </div>
+        <div class="table-container">
+            <table class="data-table">
+                <thead>
+                <tr>
+                    <th>Review ID</th>
+                    <th>Customer ID</th>
+                    <th>Rating</th>
+                    <th>Service Rating</th>
+                    <th>Platform Rating</th>
+                    <th>Created</th>
+                    <th>Description</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody id="reviewsTableBody">
+                <!-- Example row, replace with dynamic rendering -->
+                <tr>
+                    <td>1</td>
+                    <td>101</td>
+                    <td>5</td>
+                    <td>5</td>
+                    <td>5</td>
+                    <td>2025-10-23</td>
+                    <td>Great service!</td>
+                    <td>
+                        <select class="review-status-dropdown">
+                            <option value="pending">Pending</option>
+                            <option value="approved">Approved</option>
+                            <option value="rejected">Rejected</option>
+                        </select>
+                    </td>
+                    <td>
+                        <button class="btn btn-primary update-status-btn" onclick="updateReviewStatus(1, this)">Update Status</button>
+                        <button class="btn btn-danger delete-review-btn" onclick="deleteReview(1, this)">Delete</button>
+                    </td>
+                </tr>
+                <tr><td colspan="9">Loading...</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <!-- Jobs Management Section (in-page, no iframe) -->
+    <section id="jobs-management" class="management-section">
+        <div class="section-header">
+            <h2>Jobs Management</h2>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <h2>Jobs Overview</h2>
+            </div>
+            <div class="card-body">
+                <p class="text-muted">Manage job postings and applications here in the dashboard.</p>
+                <p class="text-muted">For full functionality, you can also open the dedicated page: <a href="admin_jobs_management.html">Jobs Manager</a></p>
+            </div>
+        </div>
+    </section>
+    <!-- Analytics Section -->
+    <section id="analytics" class="analytics-section">
+        <div class="section-header">
+            <h2>Analytics & Reports</h2>
+            <div class="report-actions">
+                <button class="btn btn-primary" id="saveReportBtn">
+                    <i class="fas fa-save"></i> Save Report
+                </button>
+                <button class="btn btn-outline" id="viewSavedReportsBtn">
+                    <i class="fas fa-folder-open"></i> View Saved Reports
+                </button>
+                <button class="btn btn-outline" id="exportReportBtn">
+                    <i class="fas fa-download"></i> Export Report
+                </button>
+                <div class="time-range">
+                    <select id="analyticsTimeRange">
+                        <option value="week">This Week</option>
+                        <option value="month" selected>This Month</option>
+                        <option value="quarter">This Quarter</option>
+                        <option value="year">This Year</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="analytics-grid">
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h3>Revenue Overview</h3>
+                </div>
+                <div class="chart-body">
+                    <canvas id="revenueAnalyticsChart"></canvas>
+                </div>
+            </div>
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h3>Order Volume</h3>
+                </div>
+                <div class="chart-body">
+                    <canvas id="orderVolumeChart"></canvas>
+                </div>
+            </div>
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h3>Service Distribution</h3>
+                </div>
+                <div class="chart-body">
+                    <canvas id="serviceDistributionChart"></canvas>
+                </div>
+            </div>
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h3>Customer Retention</h3>
+                </div>
+                <div class="chart-body">
+                    <canvas id="retentionChart"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="summary-stats">
+            <div class="stat-item">
+                <div class="stat-icon bg-blue">
+                    <i class="fas fa-dollar-sign"></i>
+                </div>
+                <div class="stat-info">
+                    <h4>Total Revenue</h4>
+                    <p class="stat-value">$32,450</p>
+                    <p class="stat-change">+15% from last month</p>
+                </div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon bg-green">
+                    <i class="fas fa-box-open"></i>
+                </div>
+                <div class="stat-info">
+                    <h4>Orders Processed</h4>
+                    <p class="stat-value">1,247</p>
+                    <p class="stat-change">+12% from last month</p>
+                </div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon bg-orange">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="stat-info">
+                    <h4>New Customers</h4>
+                    <p class="stat-value">147</p>
+                    <p class="stat-change">+23% from last month</p>
+                </div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon bg-purple">
+                    <i class="fas fa-star"></i>
+                </div>
+                <div class="stat-info">
+                    <h4>Average Rating</h4>
+                    <p class="stat-value">4.8/5.0</p>
+                    <p class="stat-change">+0.2 from last month</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Settings Section -->
+    <section id="settings" class="settings-section">
+        <div class="section-header">
+            <h2>Settings</h2>
+        </div>
+        <div class="settings-container">
+            <div class="settings-card">
+                <div class="card-header">
+                    <h3>Account Settings</h3>
+                </div>
+                <div class="card-body">
+                    <form id="accountSettingsForm">
+                        <div class="form-group">
+                            <label for="currentPassword">Current Password</label>
+                            <input type="password" id="currentPassword" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="newPassword">New Password</label>
+                            <input type="password" id="newPassword" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm New Password</label>
+                            <input type="password" id="confirmPassword" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save"></i> Update Password
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="settings-card">
+                <div class="card-header">
+                    <h3>Notification Settings</h3>
+                </div>
+                <div class="card-body">
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h4>Email Notifications</h4>
+                            <p>Receive email updates for order status changes</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h4>Push Notifications</h4>
+                            <p>Get push notifications on your mobile device</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h4>Marketing Emails</h4>
+                            <p>Receive promotional offers and discounts</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="settings-card">
+                <div class="card-header">
+                    <h3>System Preferences</h3>
+                </div>
+                <div class="card-body">
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h4>Time Zone</h4>
+                            <p>Select your local time zone for scheduling</p>
+                        </div>
+                        <select class="select-input">
+                            <option value="est">Eastern Time (EST)</option>
+                            <option value="cst">Central Time (CST)</option>
+                            <option value="mst">Mountain Time (MST)</option>
+                            <option value="pst" selected>Pacific Time (PST)</option>
+                        </select>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h4>Language</h4>
+                            <p>Choose your preferred language</p>
+                        </div>
+                        <select class="select-input">
+                            <option value="en" selected>English</option>
+                            <option value="es">Spanish</option>
+                            <option value="fr">French</option>
+                        </select>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h4>Default Currency</h4>
+                            <p>Set the default currency for pricing</p>
+                        </div>
+                        <select class="select-input">
+                            <option value="usd" selected>USD - US Dollar</option>
+                            <option value="eur">EUR - Euro</option>
+                            <option value="gbp">GBP - British Pound</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Review Status Update Demo -->
+    <section id="review-status-update-demo" style="margin:2em 0;">
+        <h3>Update Review Status (Demo)</h3>
+        <label for="reviewIdInput">Review ID:</label>
+        <input type="number" id="reviewIdInput" min="1" style="margin-right:1em;" autocomplete="off">
+        <label for="reviewStatusInput">Status:</label>
+        <input type="text" id="reviewStatusInput" placeholder="e.g. approved" style="margin-right:1em;" autocomplete="off">
+        <button id="updateReviewStatusBtn" class="btn-primary">Update Status</button>
+        <span id="reviewStatusResult" style="margin-left:1em;"></span>
+    </section>
+</div>
+<!-- Modals -->
+<!-- Add Customer Modal -->
+<div id="addCustomerModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Add New Customer</h2>
+            <button class="close-btn" onclick="closeModal('addCustomerModal')">&times;</button>
+        </div>
+        <form id="addCustomerForm">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" required>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="customerEmail">Email Address</label>
+                <input type="email" id="customerEmail" required>
+            </div>
+            <div class="form-group">
+                <label for="customerPhone">Phone Number</label>
+                <input type="tel" id="customerPhone" required>
+            </div>
+            <div class="form-group">
+                <label for="customerAddress">Address</label>
+                <input type="text" id="customerAddress" required>
+            </div>
+            <div class="form-group">
+                <label for="customerStatus">Status</label>
+                <select id="customerStatus" required>
+                    <option value="active">Active</option>
+                    <option value="inactive">Inactive</option>
+                </select>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline" onclick="closeModal('addCustomerModal')">Cancel</button>
+                <button type="submit" class="btn btn-primary">Add Customer</button>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- Add Staff Modal -->
+<div id="addStaffModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Add New Staff Member</h2>
+            <button class="close-btn" onclick="closeModal('addStaffModal')">&times;</button>
+        </div>
+        <form id="addStaffForm">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="staffFirstName">First Name</label>
+                    <input type="text" id="staffFirstName" required>
+                </div>
+                <div class="form-group">
+                    <label for="staffLastName">Last Name</label>
+                    <input type="text" id="staffLastName" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="staffEmail">Email Address</label>
+                <input type="email" id="staffEmail" required>
+            </div>
+            <div class="form-group">
+                <label for="staffPhone">Phone Number</label>
+                <input type="tel" id="staffPhone" required>
+            </div>
+            <div class="form-group">
+                <label for="staffPosition">Position</label>
+                <select id="staffPosition" required>
+                    <option value="">Select Position</option>
+                    <option value="laundry">Laundry Technician</option>
+                    <option value="delivery">Delivery Driver</option>
+                    <option value="manager">Store Manager</option>
+                    <option value="supervisor">Shift Supervisor</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="staffStatus">Status</label>
+                <select id="staffStatus" required>
+                    <option value="active">Active</option>
+                    <option value="inactive">Inactive</option>
+                </select>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline" onclick="closeModal('addStaffModal')">Cancel</button>
+                <button type="submit" class="btn btn-primary">Add Staff</button>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- Add Order Modal -->
+<div id="addOrderModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Create New Order</h2>
+            <button class="close-btn" onclick="closeModal('addOrderModal')">&times;</button>
+        </div>
+        <form id="addOrderForm">
+            <div class="form-group">
+                <label for="orderCustomer">Customer</label>
+                <select id="orderCustomer" required>
+                    <option value="">Select Customer</option>
+                    <option value="1">Sarah Johnson</option>
+                    <option value="2">Michael Wilson</option>
+                    <option value="3">Emily Chen</option>
+                    <option value="4">David Kim</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="orderService">Service</label>
+                <select id="orderService" required>
+                    <option value="">Select Service</option>
+                    <option value="wash">Wash & Fold</option>
+                    <option value="dry">Dry Cleaning</option>
+                    <option value="home">Home & Linens</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="orderWeight">Weight/Items</label>
+                <input type="text" id="orderWeight" placeholder="e.g., 6 lbs or 3 items" required>
+            </div>
+            <div class="form-group">
+                <label for="orderAmount">Amount</label>
+                <input type="number" id="orderAmount" step="0.01" placeholder="$0.00" required>
+            </div>
+            <div class="form-group">
+                <label for="orderStatus">Status</label>
+                <select id="orderStatus" required>
+                    <option value="pending">Pending</option>
+                    <option value="processing">Processing</option>
+                    <option value="completed">Completed</option>
+                    <option value="cancelled">Cancelled</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="orderDate">Order Date</label>
+                <input type="date" id="orderDate" required>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline" onclick="closeModal('addOrderModal')">Cancel</button>
+                <button type="submit" class="btn btn-primary">Create Order</button>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- Settings Modal -->
+<div id="settingsModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Change Password</h2>
+            <button class="close-btn" onclick="closeModal('settingsModal')">&times;</button>
+        </div>
+        <form id="settingsForm">
+            <div class="form-group">
+                <label for="settingsCurrentPassword">Current Password</label>
+                <input type="password" id="settingsCurrentPassword" required>
+            </div>
+            <div class="form-group">
+                <label for="settingsNewPassword">New Password</label>
+                <input type="password" id="settingsNewPassword" required>
+            </div>
+            <div class="form-group">
+                <label for="settingsConfirmPassword">Confirm New Password</label>
+                <input type="password" id="settingsConfirmPassword" required>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline" onclick="closeModal('settingsModal')">Cancel</button>
+                <button type="submit" class="btn btn-primary">Update Password</button>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- Delete Confirmation Modal -->
+<div id="deleteModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Confirm Deletion</h2>
+            <button class="close-btn" onclick="closeModal('deleteModal')">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div class="warning-icon">
+                <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <p>Are you sure you want to delete <strong id="deleteItemName"></strong>?</p>
+            <p class="warning-text">This action cannot be undone.</p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline" onclick="closeModal('deleteModal')">Cancel</button>
+            <button type="button" class="btn btn-danger" onclick="performDelete()">Delete</button>
+        </div>
+    </div>
+</div>
+
+<!-- Review Details Modal -->
+<div id="reviewModal" class="modal">
+    <div class="modal-content" style="max-width: 720px;">
+        <div class="modal-header">
+            <h2>Review Details</h2>
+            <button class="close-btn" onclick="closeModal('reviewModal')">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div class="card" style="box-shadow:none;border:1px solid #e5e7eb;border-radius:14px;">
+                <div class="card-body">
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+                        <div><strong>Review ID:</strong> <span id="revId">—</span></div>
+                        <div><strong>Customer:</strong> <span id="revCustomerId">—</span></div>
+                        <div><strong>Created:</strong> <span id="revCreatedAt">—</span></div>
+                        <div><strong>Overall Rating:</strong> <span id="revRating">—</span></div>
+                        <div><strong>Service Rating:</strong> <span id="revServiceRating">—</span></div>
+                        <div><strong>Platform Rating:</strong> <span id="revPlatformRating">—</span></div>
+                    </div>
+                    <div style="margin-bottom:.75rem;">
+                        <strong>Service Notes</strong>
+                        <p id="revServiceDesc" style="margin:.25rem 0 0;color:#374151;">—</p>
+                    </div>
+                    <div style="margin-bottom:.75rem;">
+                        <strong>Platform Notes</strong>
+                        <p id="revPlatformDesc" style="margin:.25rem 0 0;color:#374151;">—</p>
+                    </div>
+                    <div>
+                        <strong>Description</strong>
+                        <p id="revDescription" style="margin:.25rem 0 0;color:#111827;">—</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline" onclick="closeModal('reviewModal')">Close</button>
+        </div>
+    </div>
+</div>
+
+<!-- View Order Modal -->
+<div id="viewOrderModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header modern">
+            <div class="modal-header-icon">
+                <i class="fas fa-receipt"></i>
+            </div>
+            <div>
+                <h2 id="viewOrderTitle">Order Details</h2>
+                <p id="viewOrderId" class="modal-header-subtitle">Order ID</p>
+            </div>
+            <button class="close-btn" onclick="closeModal('viewOrderModal')">&times;</button>
+        </div>
+        <div class="modal-body" style="text-align: left;">
+            <div class="order-details-section">
+                <h4>Customer & Service</h4>
+                <div class="detail-item">
+                    <i class="fas fa-user"></i>
+                    <div>
+                        <span class="label">Customer</span>
+                        <span class="value" id="viewOrderCustomerName">—</span>
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-tshirt"></i>
+                    <div>
+                        <span class="label">Service</span>
+                        <span class="value" id="viewOrderServiceType">—</span>
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-box-open"></i>
+                    <div>
+                        <span class="label">Items</span>
+                        <span class="value" id="viewOrderItems">—</span>
+                    </div>
+                </div>
+            </div>
+            <div class="order-details-section">
+                <h4>Status & Date</h4>
+                <div class="detail-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <div>
+                        <span class="label">Order Date</span>
+                        <span class="value" id="viewOrderDate">—</span>
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-info-circle"></i>
+                    <div>
+                        <span class="label">Status</span>
+                        <span id="viewOrderStatusBadge" class="status-badge">—</span>
+                    </div>
+                </div>
+            </div>
+            <div class="order-details-pricing">
+                <h4>Pricing</h4>
+                <div class="detail-item">
+                    <span class="label">Subtotal</span>
+                    <span class="value" id="viewOrderSubtotal">—</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">Tax</span>
+                    <span class="value" id="viewOrderTax">—</span>
+                </div>
+                <div class="detail-item total">
+                    <span class="label">Total</span>
+                    <span class="value" id="viewOrderTotal">—</span>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary" onclick="closeModal('viewOrderModal')">Close</button>
+        </div>
+    </div>
+</div>
+
+<!-- View Payment Modal -->
+<div id="viewPaymentModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header modern">
+            <div class="modal-header-icon">
+                <i class="fas fa-dollar-sign"></i>
+            </div>
+            <div>
+                <h2 id="viewPaymentTitle">Payment Details</h2>
+                <p id="viewPaymentId" class="modal-header-subtitle">Payment ID</p>
+            </div>
+            <button class="close-btn" onclick="closeModal('viewPaymentModal')">&times;</button>
+        </div>
+        <div class="modal-body" style="text-align: left;">
+            <div class="order-details-section">
+                <h4>Transaction</h4>
+                <div class="detail-item">
+                    <i class="fas fa-receipt"></i>
+                    <div>
+                        <span class="label">Order ID</span>
+                        <span class="value" id="viewPaymentOrderId">—</span>
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-user"></i>
+                    <div>
+                        <span class="label">Customer</span>
+                        <span class="value" id="viewPaymentCustomerName">—</span>
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <div>
+                        <span class="label">Payment Date</span>
+                        <span class="value" id="viewPaymentDate">—</span>
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-credit-card"></i>
+                    <div>
+                        <span class="label">Payment Method</span>
+                        <span class="value" id="viewPaymentMethod">—</span>
+                    </div>
+                </div>
+            </div>
+            <div class="order-details-pricing">
+                <h4>Amount</h4>
+                <div class="detail-item total">
+                    <span class="label">Total Paid</span>
+                    <span class="value" id="viewPaymentAmount">—</span>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary" onclick="closeModal('viewPaymentModal')">Close</button>
+        </div>
+    </div>
+</div>
+
+
+<!-- View Saved Reports Modal -->
+<div id="savedReportsModal" class="modal">
+    <div class="modal-content" style="max-width: 900px;">
+        <div class="modal-header">
+            <h2><i class="fas fa-folder-open"></i> Saved Reports</h2>
+            <button class="close-btn" onclick="closeModal('savedReportsModal')">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                    <tr>
+                        <th>Report ID</th>
+                        <th>Time Range</th>
+                        <th>Completed Orders</th>
+                        <th>Total Customers</th>
+                        <th>Total Income</th>
+                        <th>Generated</th>
+                        <th>Generated By</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody id="savedReportsTableBody">
+                    <tr><td colspan="8">Loading...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline" onclick="closeModal('savedReportsModal')">Close</button>
+        </div>
+    </div>
+</div>
+
+<!-- Payments Section -->
+<section id="adminPayments" class="dashboard-section" style="margin-top:2rem;">
+    <h2>Payments</h2>
+    <table id="paymentsTable" style="width:100%;border-collapse:collapse;">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Order ID</th>
+                <th>Customer ID</th>
+                <th>Amount</th>
+                <th>Method</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Payments will be loaded here -->
+        </tbody>
+    </table>
+</section>
+<script>
+</script>
+
+<!-- Scroll to Top Button -->
+<button id="scrollTopBtn" class="scroll-top" aria-label="Scroll to top">
+    <i class="fas fa-arrow-up" aria-hidden="true"></i>
+</button>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/index.js" defer></script>
+<script src="js/admin-dashboard.js"></script>
+</body>
+</html>
+
