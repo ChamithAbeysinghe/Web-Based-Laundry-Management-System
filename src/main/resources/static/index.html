@@ -1,0 +1,454 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LaundryPro - Smart Laundry Solutions</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<!-- Background Effects -->
+<div class="bg-effects" aria-hidden="true">
+    <span class="orb orb-1"></span>
+    <span class="orb orb-2"></span>
+    <span class="orb orb-3"></span>
+    <span class="orb orb-4"></span>
+    <span class="mesh"></span>
+</div>
+
+<!-- Header -->
+<header class="header-loading">
+    <div class="header-container">
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="fas fa-tshirt"></i>
+            </div>
+            <span>LaundryPro</span>
+        </div>
+        <nav class="nav-links">
+            <a href="index.html" class="active"><span>Home</span></a>
+            <a href="#services"><span>Services</span></a>
+            <a href="#pricing"><span>Pricing</span></a>
+            <a href="order-tracking.html"><span>Track Order</span></a>
+            <a href="#reviews"><span>Reviews</span></a>
+            <a href="Job_application.html"><span>Careers</span></a>
+        </nav>
+        <div class="auth-buttons">
+            <a href="login.html" id="navLoginBtn" class="btn btn-outline">Login</a>
+            <a href="register.html" id="navRegisterBtn" class="btn btn-primary">Get Started</a>
+            <div id="navUserArea" class="nav-user" style="display:none; position:relative;">
+                <button id="navUserToggle" class="user-chip" aria-haspopup="true" aria-expanded="false">
+                    <span class="avatar-badge" id="navUserInitials">U</span>
+                    <span id="navUserName" class="user-name">Customer</span>
+                    <i class="fas fa-chevron-down chev" aria-hidden="true"></i>
+                </button>
+                <div id="navUserMenu" class="user-menu" role="menu" aria-label="Account menu">
+                    <a href="dashboard.html" class="dropdown-item" role="menuitem">
+                        <i class="fas fa-gauge-high" aria-hidden="true"></i> My Dashboard
+                    </a>
+                    <a href="javascript:void(0);" id="navLogoutBtn" class="dropdown-item" role="menuitem">
+                        <i class="fas fa-sign-out-alt" aria-hidden="true"></i> Sign out
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Hero Section -->
+<section class="hero" id="home">
+    <div class="hero-content">
+        <h1 class="reveal">
+            <span class="line">Revolutionize Your</span>
+            <span class="line">Laundry Experience</span>
+        </h1>
+        <p class="hero-subtitle reveal">Smart, fast, and eco-friendly laundry service delivered to your doorstep. Join thousands of satisfied customers who trust us with their laundry needs.</p>
+        <div class="hero-buttons reveal">
+            <a href="register.html" class="btn btn-primary btn-xl">
+                <i class="fas fa-calendar-check"></i> Schedule Pickup
+            </a>
+            <a href="#services" class="btn btn-outline btn-xl">
+                <i class="fas fa-info-circle"></i> Learn More
+            </a>
+            <a href="dashboard.html" id="customerDashboardBtn" class="btn btn-primary btn-xl" style="display:none;" aria-label="Open my customer dashboard">
+                <i class="fas fa-gauge-high" aria-hidden="true"></i> My Dashboard
+            </a>
+        </div>
+        <div class="trust-badges reveal">
+            <div class="badge">
+                <i class="fas fa-shield-alt"></i>
+                <span>100% Safe & Secure</span>
+            </div>
+            <div class="badge">
+                <i class="fas fa-leaf"></i>
+                <span>Eco-Friendly</span>
+            </div>
+            <div class="badge">
+                <i class="fas fa-truck"></i>
+                <span>Free Delivery</span>
+            </div>
+        </div>
+    </div>
+    <div class="hero-visual reveal">
+        <div class="laundry-animation">
+            <div class="clothes-container">
+                <div class="tshirt"></div>
+                <div class="jeans"></div>
+                <div class="shirt"></div>
+                <div class="socks"></div>
+            </div>
+            <div class="washing-machine">
+                <div class="drum"></div>
+                <div class="bubbles">
+                    <div class="bubble"></div>
+                    <div class="bubble"></div>
+                    <div class="bubble"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- How It Works -->
+<section class="how-it-works" id="how-it-works">
+    <div class="section-header reveal">
+        <h2 class="section-title">How It Works</h2>
+        <p class="section-subtitle">Simple, convenient, and hassle-free laundry service</p>
+    </div>
+    <div class="steps reveal">
+        <div class="step">
+            <div class="step-icon">
+                <i class="fas fa-calendar-alt"></i>
+            </div>
+            <h3>1. Schedule Pickup</h3>
+            <p>Choose a convenient time through our app or website. We'll come to your doorstep.</p>
+        </div>
+        <div class="step-arrow">
+            <i class="fas fa-chevron-right"></i>
+        </div>
+        <div class="step">
+            <div class="step-icon">
+                <i class="fas fa-spa"></i>
+            </div>
+            <h3>2. We Clean</h3>
+            <p>Our expert team processes your laundry with premium products and equipment.</p>
+        </div>
+        <div class="step-arrow">
+            <i class="fas fa-chevron-right"></i>
+        </div>
+        <div class="step">
+            <div class="step-icon">
+                <i class="fas fa-shipping-fast"></i>
+            </div>
+            <h3>3. We Deliver</h3>
+            <p>We return your fresh, clean clothes neatly folded and ready to wear.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section class="services" id="services">
+    <div class="section-header reveal">
+        <h2 class="section-title">Our Premium Services</h2>
+        <p class="section-subtitle">We offer a comprehensive range of laundry services to meet all your needs</p>
+    </div>
+    <div class="services-grid">
+        <div class="service-card reveal">
+            <div class="service-icon">
+                <i class="fas fa-tshirt"></i>
+            </div>
+            <h3>Wash & Fold</h3>
+            <p>Our most popular service. We wash, dry, and fold all your clothes with care using premium detergents.</p>
+            <ul class="features-list">
+                <li><i class="fas fa-check"></i> Premium detergents</li>
+                <li><i class="fas fa-check"></i> Fabric softener</li>
+                <li><i class="fas fa-check"></i> Stain treatment</li>
+                <li><i class="fas fa-check"></i> 24-hour turnaround</li>
+            </ul>
+            <a href="register.html" class="btn btn-primary">Schedule Now</a>
+        </div>
+        <div class="service-card reveal">
+            <div class="service-icon">
+                <i class="fas fa-user-tie"></i>
+            </div>
+            <h3>Dry Cleaning</h3>
+            <p>Professional dry cleaning for delicate fabrics, suits, dresses, and special occasion garments.</p>
+            <ul class="features-list">
+                <li><i class="fas fa-check"></i> Expert stain removal</li>
+                <li><i class="fas fa-check"></i> Pressing & steaming</li>
+                <li><i class="fas fa-check"></i> Garment bags</li>
+                <li><i class="fas fa-check"></i> 48-hour service</li>
+            </ul>
+            <a href="register.html" class="btn btn-outline">Schedule Now</a>
+        </div>
+        <div class="service-card reveal">
+            <div class="service-icon">
+                <i class="fas fa-bed"></i>
+            </div>
+            <h3>Home & Linens</h3>
+            <p>Special care for your bedding, towels, curtains, and other household textiles.</p>
+            <ul class="features-list">
+                <li><i class="fas fa-check"></i> Deep cleaning</li>
+                <li><i class="fas fa-check"></i> Sanitization</li>
+                <li><i class="fas fa-check"></i> Wrinkle prevention</li>
+                <li><i class="fas fa-check"></i> Custom folding</li>
+            </ul>
+            <a href="register.html" class="btn btn-outline">Schedule Now</a>
+        </div>
+    </div>
+</section>
+
+<!-- Pricing Section -->
+<section class="pricing" id="pricing">
+    <div class="section-header reveal">
+        <h2 class="section-title">Simple, Transparent Pricing</h2>
+        <p class="section-subtitle">Choose the plan that's right for you. No hidden fees, ever.</p>
+    </div>
+    <div class="pricing-grid">
+        <div class="pricing-card reveal">
+            <div class="pricing-header">
+                <h3>Pay as You Go</h3>
+                <p>Perfect for occasional use</p>
+                <div class="price">
+                    $1.75<span class="price-unit">/ lb</span>
+                </div>
+            </div>
+            <ul class="features-list">
+                <li><i class="fas fa-check"></i> Wash & Fold Service</li>
+                <li><i class="fas fa-check"></i> 24-48 Hour Turnaround</li>
+                <li><i class="fas fa-check"></i> Pay Per Order</li>
+                <li><i class="fas fa-times"></i> Free Delivery (Orders > $40)</li>
+            </ul>
+            <a href="register.html" class="btn btn-outline">Get Started</a>
+        </div>
+        <div class="pricing-card popular reveal">
+            <div class="popular-badge">Most Popular</div>
+            <div class="pricing-header">
+                <h3>Monthly</h3>
+                <p>Ideal for individuals & couples</p>
+                <div class="price">
+                    $129<span class="price-unit">/ mo</span>
+                </div>
+            </div>
+            <ul class="features-list">
+                <li><i class="fas fa-check"></i> Up to 80 lbs/month</li>
+                <li><i class="fas fa-check"></i> 24-Hour Turnaround</li>
+                <li><i class="fas fa-check"></i> 4 Free Pickups & Deliveries</li>
+                <li><i class="fas fa-check"></i> 10% Off Dry Cleaning</li>
+            </ul>
+            <a href="register.html" class="btn btn-primary">Choose Plan</a>
+        </div>
+        <div class="pricing-card reveal">
+            <div class="pricing-header">
+                <h3>Family</h3>
+                <p>Best value for families</p>
+                <div class="price">
+                    $249<span class="price-unit">/ mo</span>
+                </div>
+            </div>
+            <ul class="features-list">
+                <li><i class="fas fa-check"></i> Up to 160 lbs/month</li>
+                <li><i class="fas fa-check"></i> 24-Hour Turnaround</li>
+                <li><i class="fas fa-check"></i> Unlimited Free Deliveries</li>
+                <li><i class="fas fa-check"></i> 15% Off Dry Cleaning</li>
+            </ul>
+            <a href="register.html" class="btn btn-outline">Choose Plan</a>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials -->
+<section class="testimonials">
+    <div class="section-header reveal">
+        <h2 class="section-title">What Our Customers Say</h2>
+        <p class="section-subtitle">Join thousands of happy customers who love our service</p>
+    </div>
+    <div class="testimonials-grid">
+        <div class="testimonial-card reveal">
+            <div class="rating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+            <p class="testimonial-text">"LaundryPro has completely changed how I manage my laundry. The pickup and delivery are so convenient, and my clothes have never looked better!"</p>
+            <div class="customer-info">
+                <div class="customer-avatar">SJ</div>
+                <div class="customer-details">
+                    <h4>Sarah Johnson</h4>
+                    <p>Loyal Customer for 2 years</p>
+                </div>
+            </div>
+        </div>
+        <div class="testimonial-card reveal">
+            <div class="rating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+            <p class="testimonial-text">"As a busy professional, I don't have time for laundry. LaundryPro gives me back hours each week, and the quality is outstanding."</p>
+            <div class="customer-info">
+                <div class="customer-avatar">MD</div>
+                <div class="customer-details">
+                    <h4>Michael Davis</h4>
+                    <p>Customer for 1 year</p>
+                </div>
+            </div>
+        </div>
+        <div class="testimonial-card reveal">
+            <div class="rating">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+            <p class="testimonial-text">"I was skeptical at first, but LaundryPro exceeded my expectations. My delicate fabrics are treated with such care, and the quality is very reasonable."</p>
+            <div class="customer-info">
+                <div class="customer-avatar">EL</div>
+                <div class="customer-details">
+                    <h4>Emily Lee</h4>
+                    <p>New Customer, already hooked</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section reveal">
+    <div class="cta-content" style="text-align:center;">
+        <h2>Ready to Simplify Your Life?</h2>
+        <p>Join thousands of customers who have discovered the convenience of professional laundry service.</p>
+        <div class="cta-actions" style="display:flex;gap:.75rem;flex-wrap:wrap;align-items:center;justify-content:center;">
+            <a href="register.html" class="btn btn-primary btn-xl">Get Started Today</a>
+        </div>
+    </div>
+</section>
+
+<!-- Reviews (Inline via iframe) -->
+<section id="reviews" class="reveal" style="padding: 72px 0;">
+    <div class="section-header" style="text-align:center; margin-bottom: 1.25rem;">
+        <h2 class="section-title" style="display:flex;align-items:center;gap:.6rem;justify-content:center;">
+            <i class="fas fa-star" style="color:#f59e0b;"></i> Share Your Feedback
+        </h2>
+        <p class="section-subtitle" style="max-width:720px;margin:0 auto;color:#6b7280;">
+            We’re always improving. Let us know how we did with your service and the platform experience.
+        </p>
+    </div>
+    <div style="max-width: 1120px; margin: 0 auto; padding: 0 1rem;">
+        <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:16px; box-shadow: 0 10px 28px rgba(15,23,42,0.06); padding: 0; overflow: hidden;">
+            <iframe id="reviewsFrame" src="Reviews.html" title="LaundryPro Reviews" loading="lazy" sandbox="allow-scripts allow-same-origin allow-top-navigation-by-user-activation" style="width:100%; height: 820px; border:0; display:block; background:#fff;"></iframe>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer id="contact">
+    <div class="footer-container">
+        <div class="footer-grid">
+            <div class="footer-column">
+                <div class="footer-logo">
+                    <div class="logo-icon"><i class="fas fa-tshirt"></i></div>
+                    <span>LaundryPro</span>
+                </div>
+                <p>Revolutionizing laundry management with smart technology and exceptional service. We make clean clothes convenient.</p>
+                <div class="social-links">
+                    <a href="javascript:void(0);" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="javascript:void(0);" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="javascript:void(0);" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="javascript:void(0);" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="#services"><i class="fas fa-concierge-bell"></i> Services</a></li>
+                    <li><a href="#pricing"><i class="fas fa-tags"></i> Pricing</a></li>
+                    <li><a href="Job_application.html"><i class="fas fa-briefcase"></i> Careers</a></li>
+                    <li><a href="#reviews"><i class="fas fa-star"></i> Reviews</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="javascript:void(0);"><i class="fas fa-question-circle"></i> Help Center</a></li>
+                    <li><a href="javascript:void(0);"><i class="fas fa-phone"></i> Contact Us</a></li>
+                    <li><a href="javascript:void(0);"><i class="fas fa-info-circle"></i> FAQs</a></li>
+                    <li><a href="javascript:void(0);"><i class="fas fa-file-contract"></i> Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <ul class="contact-info">
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Clean Street, City, State 12345</li>
+                    <li><i class="fas fa-phone"></i> (555) 123-4567</li>
+                    <li><i class="fas fa-envelope"></i> support@laundrypro.com</li>
+                    <li><i class="fas fa-clock"></i> Mon-Sat: 8am-8pm</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 LaundryPro. All rights reserved. | Designed with <i class="fas fa-heart"></i> for clean living</p>
+        </div>
+    </div>
+</footer>
+
+<!-- Scroll to Top Button -->
+<button id="scrollTopBtn" class="scroll-top" aria-label="Scroll to top">
+    <i class="fas fa-arrow-up" aria-hidden="true"></i>
+</button>
+
+<script src="js/auth.js"></script>
+<script src="js/index.js"></script>
+<script>
+    // Force scroll to top on page load
+    window.onload = function() {
+        setTimeout(function() {
+            window.scrollTo(0, 0);
+        }, 0);
+    };
+
+    // Auto-fit reviews iframe height
+    (function () {
+        const frame = document.getElementById('reviewsFrame');
+        if (!frame) return;
+        function fit() {
+            try {
+                const doc = frame.contentDocument || frame.contentWindow?.document;
+                if (!doc) return;
+                const h = Math.max(doc.body.scrollHeight || 0, doc.documentElement.scrollHeight || 0, 820);
+                frame.style.height = h + 'px';
+            } catch (e) {
+                console.error("Failed to resize iframe:", e);
+            }
+        }
+        frame.addEventListener('load', fit);
+        window.addEventListener('resize', () => setTimeout(fit, 60));
+    })();
+</script>
+
+<!-- REMOVED the conflicting inline "Auto-hide header script" -->
+
+<!-- MODIFIED: Advanced Scroll Animation Script (Fixed) -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const revealElements = document.querySelectorAll('.reveal');
+        if (!revealElements.length) return;
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    // Apply a staggered delay for a smoother, sequential effect
+                    const delay = entry.target.dataset.delay || index * 100;
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, delay);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        revealElements.forEach(element => {
+            observer.observe(element);
+        });
+    });
+</script>
+</body>
+</html>

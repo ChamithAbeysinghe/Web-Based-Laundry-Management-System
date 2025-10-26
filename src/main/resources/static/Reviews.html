@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LaundryPro — Share Your Feedback</title>
+    <link rel="stylesheet" href="css/Reviews.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header (hidden as requested) -->
+    <header style="display: none;"></header>
+
+    <main class="container">
+        <!-- Hero -->
+        <section class="hero">
+            <h1>We Value Your Feedback</h1>
+            <p>Help us improve by sharing your experience with our service and platform.</p>
+        </section>
+
+        <!-- Login Required Notice (shown when not logged in) -->
+        <section id="loginRequired" class="review-section" style="display:none;">
+            <div class="review-card" style="text-align:center;">
+                <h2><i class="fas fa-lock"></i> Sign in to leave a review</h2>
+                <p>We’d love to hear your thoughts. Please sign in to submit your review.</p>
+                <div style="display:flex;justify-content:center;">
+                    <a href="login.html?returnTo=index.html" target="_top" class="btn-primary"><i class="fas fa-sign-in-alt"></i> Login</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Review Form -->
+        <section id="reviewForm" class="review-section">
+            <div class="review-card">
+                <div class="form-section">
+                    <h2><i class="fas fa-hand-holding-heart"></i> Service Experience</h2>
+                    <p>How was your laundry service?</p>
+                    <div class="rating-group">
+                        <label>Rating</label>
+                        <div class="star-rating" id="serviceRating">
+                            <span data-value="1"><i class="fas fa-star"></i></span>
+                            <span data-value="2"><i class="fas fa-star"></i></span>
+                            <span data-value="3"><i class="fas fa-star"></i></span>
+                            <span data-value="4"><i class="fas fa-star"></i></span>
+                            <span data-value="5"><i class="fas fa-star"></i></span>
+                        </div>
+                        <input type="hidden" id="serviceRatingValue" value="5" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label for="serviceReview">Your Thoughts (Optional)</label>
+                        <textarea id="serviceReview" placeholder="e.g., Clothes were fresh and folded perfectly!" maxlength="500" autocomplete="off"></textarea>
+                        <div class="char-counter"><span id="serviceCounter">0</span>/500</div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h2><i class="fas fa-laptop"></i> Platform Experience</h2>
+                    <p>How easy was it to use our website/app?</p>
+                    <div class="rating-group">
+                        <label>Rating</label>
+                        <div class="star-rating" id="platformRating">
+                            <span data-value="1"><i class="fas fa-star"></i></span>
+                            <span data-value="2"><i class="fas fa-star"></i></span>
+                            <span data-value="3"><i class="fas fa-star"></i></span>
+                            <span data-value="4"><i class="fas fa-star"></i></span>
+                            <span data-value="5"><i class="fas fa-star"></i></span>
+                        </div>
+                        <input type="hidden" id="platformRatingValue" value="5" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label for="platformReview">Suggestions (Optional)</label>
+                        <textarea id="platformReview" placeholder="e.g., The tracking page is amazing!" maxlength="500" autocomplete="off"></textarea>
+                        <div class="char-counter"><span id="platformCounter">0</span>/500</div>
+                    </div>
+                </div>
+
+                <button id="submitReview" class="btn-primary">
+                    <i class="fas fa-paper-plane"></i> Submit Review
+                </button>
+            </div>
+        </section>
+
+        <!-- Success Screen -->
+        <section id="successScreen" class="review-section" style="display: none;">
+            <div class="success-card">
+                <div class="success-icon">
+                    <i class="fas fa-comment-dots"></i>
+                </div>
+                <h2>Thank You!</h2>
+                <p>Your feedback helps us deliver better freshness and smoother experiences.</p>
+                <div class="review-summary">
+                    <div class="summary-item">
+                        <div class="summary-label">Service Rating</div>
+                        <div class="stars" id="summaryServiceStars"></div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-label">Platform Rating</div>
+                        <div class="stars" id="summaryPlatformStars"></div>
+                    </div>
+                </div>
+                <a href="index.html" class="btn-outline">
+                    <i class="fas fa-home"></i> Back to Home
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 LaundryPro. Every review makes us better.</p>
+        </div>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script src="js/Reviews.js"></script>
+</body>
+</html>

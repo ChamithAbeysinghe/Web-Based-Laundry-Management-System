@@ -1,0 +1,205 @@
+/* Notifications - Modern UI with animations */
+
+/* Anchor button styles */
+.notification-btn {
+  position: relative;
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #4a5568;
+  cursor: pointer;
+  padding: 8px 10px;
+  border-radius: 10px;
+  transition: background-color 180ms ease, transform 120ms ease;
+}
+.notification-btn:hover { background: rgba(0,0,0,0.06); }
+.notification-btn:active { transform: scale(0.98); }
+
+/* Badge with bounce */
+.notification-badge {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  background: linear-gradient(135deg, #ff3b30, #ff6b6b);
+  color: #fff;
+  border-radius: 999px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  font-size: 11px;
+  line-height: 18px;
+  text-align: center;
+  box-shadow: 0 6px 14px rgba(255, 59, 48, 0.2);
+  transform-origin: 100% 0%;
+  display: none;
+}
+
+.notification-badge.show-bounce {
+  animation: badge-bounce 450ms cubic-bezier(.34,1.56,.64,1);
+}
+@keyframes badge-bounce {
+  0% { transform: scale(0.6); opacity: 0.4; }
+  60% { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(1); }
+}
+
+/* Dropdown container (glassmorphic) */
+.notification-dropdown {
+  position: absolute;
+  top: 60px; /* will be overridden dynamically */
+  right: 20px; /* will be overridden dynamically */
+  width: 380px;
+  max-height: 560px;
+  overflow: hidden; /* hide scrollbars around header */
+  border-radius: 16px;
+  background: rgba(255,255,255,0.75);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.6);
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.18);
+  opacity: 0;
+  transform: scale(0.96) translateY(-6px);
+  pointer-events: none;
+  transition: opacity 180ms ease, transform 200ms cubic-bezier(.2,.8,.2,1);
+  z-index: 1100;
+}
+.notification-dropdown.show {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  pointer-events: auto;
+}
+
+/* Overlay to close on outside click */
+#notification-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.22);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 200ms ease;
+  z-index: 1090;
+}
+#notification-overlay.show { opacity: 1; pointer-events: auto; }
+
+/* Header */
+.notification-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  background: linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.6));
+}
+.notification-header h3 { font-size: 16px; margin: 0; color: #111827; }
+.notification-header .actions {
+  display: flex; gap: 8px;
+}
+.notification-header .actions .btn-inline {
+  background: transparent;
+  border: 0;
+  padding: 6px 10px;
+  font-size: 12px;
+  color: #2563eb;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.notification-header .actions .btn-inline:hover { background: rgba(37, 99, 235, 0.08); }
+
+/* Scroll area */
+.notification-scroll {
+  max-height: 480px;
+  overflow: auto;
+  padding: 6px 6px 10px 6px;
+}
+
+/* Item */
+.notification-item {
+  position: relative; /* allow ::after check badge placement */
+  display: grid;
+  grid-template-columns: 36px 1fr auto;
+  grid-gap: 10px;
+  align-items: center;
+  padding: 10px 12px;
+  margin: 6px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.9);
+  border: 1px solid rgba(0,0,0,0.05);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.04);
+  cursor: pointer;
+  transition: transform 160ms ease, background 200ms ease, box-shadow 200ms ease, opacity 220ms ease, filter 220ms ease, color 220ms ease, max-height 240ms ease, margin 240ms ease, padding 240ms ease;
+  will-change: transform;
+  opacity: 0;
+  transform: translateY(6px);
+  animation: item-in 320ms ease forwards;
+}
+@keyframes item-in { to { opacity: 1; transform: translateY(0); } }
+
+.notification-item.unread { background: linear-gradient(180deg, #eef4ff, #ffffff); border-color: rgba(37, 99, 235, 0.2); }
+.notification-item:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08); }
+
+.notification-icon {
+  width: 36px; height: 36px; border-radius: 10px;
+  background: #e0e7ff; color: #1d4ed8; display: grid; place-items: center;
+}
+.notification-content { min-width: 0; }
+.notification-message { font-size: 14px; color: #111827; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.notification-meta { font-size: 12px; color: #6b7280; display: flex; gap: 8px; align-items: center; margin-top: 2px; }
+.meta-dot { width: 4px; height: 4px; border-radius: 50%; background: #9ca3af; display: inline-block; }
+
+.badge-new { background: #10b981; color: white; font-size: 10px; padding: 2px 6px; border-radius: 999px; }
+
+/* Actions */
+.notification-actions { display: flex; gap: 6px; align-items: center; }
+.notification-actions .icon-btn {
+  width: 30px; height: 30px; display: grid; place-items: center;
+  border: 1px solid rgba(0,0,0,0.08); border-radius: 8px; background: white; color: #374151;
+}
+.notification-actions .icon-btn:hover { background: #f3f4f6; }
+
+/* Delete collapse animation */
+.notification-item.collapsing {
+  max-height: 0; margin: 0 6px; padding: 0 12px; opacity: 0; overflow: hidden;
+}
+
+/* Topbar actions container */
+.topbar-actions { display: flex; justify-content: flex-end; align-items: center; gap: 8px; margin-bottom: 8px; }
+
+/* Mobile adjustments */
+@media (max-width: 520px) {
+  .notification-dropdown { width: 94vw; right: 3vw !important; left: 3vw !important; }
+}
+
+/* Modern read state: subtly dim + grayscale */
+.notification-item.read {
+  opacity: 0.72;
+  filter: grayscale(0.25);
+}
+.notification-item.read:hover {
+  opacity: 0.88;
+  filter: grayscale(0.15);
+}
+.notification-item.read .notification-message { color: #6b7280; }
+.notification-item.read .notification-meta { color: #9ca3af; }
+.notification-item.read .badge-new { display: none; }
+.notification-item.read .notification-icon {
+  background: #f1f5f9; /* slate-100 */
+  color: #94a3b8;      /* slate-400 */
+}
+
+/* Check indicator for read */
+.notification-item.read::after {
+  content: '✓';
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: #10b981; /* emerald */
+  color: white;
+  font-size: 12px;
+  line-height: 18px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(16,185,129,0.25);
+  opacity: 0.9;
+}

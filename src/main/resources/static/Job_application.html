@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LaundryPro Careers — Join Our Team</title>
+    <link rel="stylesheet" href="css/Job_application.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- REMOVED: <link rel="stylesheet" href="css/index.css"> -->
+</head>
+<body>
+<!-- Background Effects (from index.html) -->
+<div class="bg-effects" aria-hidden="true">
+    <span class="orb orb-1"></span>
+    <span class="orb orb-2"></span>
+    <span class="orb orb-3"></span>
+    <span class="orb orb-4"></span>
+</div>
+
+<!-- Header (from index.html, with active class updated) -->
+<header class="header-loading">
+    <div class="header-container">
+        <div class="logo">
+            <div class="logo-icon"><i class="fas fa-tshirt"></i></div>
+            <span>LaundryPro</span>
+        </div>
+        <nav class="nav-links">
+            <a href="index.html"><span>Home</span></a>
+            <a href="index.html#services"><span>Services</span></a>
+            <a href="order-tracking.html"><span>Track Order</span></a>
+            <a href="Job_application.html" class="active"><span>Careers</span></a>
+            <a href="index.html#reviews"><span>Reviews</span></a>
+        </nav>
+        <div class="auth-buttons">
+            <a href="login.html" id="navLoginBtn" class="btn btn-outline">Login</a>
+            <a href="register.html" id="navRegisterBtn" class="btn btn-primary">Get Started</a>
+            <div id="navUserArea" class="nav-user" style="display:none; position:relative;">
+                <button id="navUserToggle" class="user-chip" aria-haspopup="true" aria-expanded="false">
+                    <span class="avatar-badge" id="navUserInitials">U</span>
+                    <span id="navUserName" class="user-name">Customer</span>
+                    <i class="fas fa-chevron-down chev" aria-hidden="true"></i>
+                </button>
+                <div id="navUserMenu" class="user-menu" role="menu" aria-label="Account menu">
+                    <a href="dashboard.html" class="dropdown-item" role="menuitem">
+                        <i class="fas fa-gauge-high" aria-hidden="true"></i> My Dashboard
+                    </a>
+                    <a href="javascript:void(0);" id="navLogoutBtn" class="dropdown-item" role="menuitem">
+                        <i class="fas fa-sign-out-alt" aria-hidden="true"></i> Sign out
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Hero -->
+<section class="hero reveal">
+    <div class="hero-content">
+        <h1>Join the LaundryPro Team</h1>
+        <p>We're hiring passionate people to deliver freshness across the city. Find your perfect role and start your journey with us.</p>
+    </div>
+</section>
+
+<!-- Main Content: Jobs Grid + Payments (Tabbed) -->
+<main class="container">
+
+    <!-- Tabs -->
+    <div class="tabs reveal">
+        <button id="tabJobs" class="tab-btn active">
+            <i class="fas fa-briefcase"></i> Current Openings
+        </button>
+    </div>
+
+    <!-- Jobs Tab Content -->
+    <section id="jobsTabContent">
+        <div class="loading reveal" id="loading">
+            <i class="fas fa-spinner fa-spin"></i> Loading opportunities...
+        </div>
+
+        <div class="jobs-grid" id="jobsGrid">
+            <!-- Jobs will be populated by JavaScript -->
+        </div>
+
+        <div class="no-jobs reveal" id="noJobs" style="display: none;">
+            <i class="fas fa-briefcase"></i>
+            <h3>No Current Openings</h3>
+            <p>We are not hiring at the moment. Please check back soon!</p>
+        </div>
+    </section>
+
+    <!-- Payments Tab Content -->
+    <section id="paymentsTabContent" style="display:none;">
+        <div class="jobs-header reveal">
+            <h2>Payments</h2>
+            <p>All recorded payments</p>
+        </div>
+
+        <div class="table-container reveal">
+            <table class="data-table">
+                <thead>
+                <tr>
+                    <th>Payment ID</th>
+                    <th>Order ID</th>
+                    <th>Customer</th>
+                    <th>Amount</th>
+                    <th>Method</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody id="jobsPaymentsTableBody">
+                <tr><td colspan="6" style="text-align:center; padding:2rem;">Loading...</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</main>
+
+<!-- Footer (from index.html) -->
+<footer id="contact">
+    <div class="footer-container">
+        <div class="footer-grid">
+            <div class="footer-column">
+                <div class="footer-logo">
+                    <div class="logo-icon"><i class="fas fa-tshirt"></i></div>
+                    <span>LaundryPro</span>
+                </div>
+                <p>Revolutionizing laundry management with smart technology and exceptional service. We make clean clothes convenient.</p>
+                <div class="social-links">
+                    <a href="javascript:void(0);" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="javascript:void(0);" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="javascript:void(0);" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="javascript:void(0);" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="index.html#services"><i class="fas fa-concierge-bell"></i> Services</a></li>
+                    <li><a href="index.html#pricing"><i class="fas fa-tags"></i> Pricing</a></li>
+                    <li><a href="Job_application.html"><i class="fas fa-briefcase"></i> Careers</a></li>
+                    <li><a href="index.html#reviews"><i class="fas fa-star"></i> Reviews</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="javascript:void(0);"><i class="fas fa-question-circle"></i> Help Center</a></li>
+                    <li><a href="javascript:void(0);"><i class="fas fa-phone"></i> Contact Us</a></li>
+                    <li><a href="javascript:void(0);"><i class="fas fa-info-circle"></i> FAQs</a></li>
+                    <li><a href="javascript:void(0);"><i class="fas fa-file-contract"></i> Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <ul class="contact-info">
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Clean Street, City, State 12345</li>
+                    <li><i class="fas fa-phone"></i> (555) 123-4567</li>
+                    <li><i class="fas fa-envelope"></i> support@laundrypro.com</li>
+                    <li><i class="fas fa-clock"></i> Mon-Sat: 8am-8pm</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 LaundryPro. All rights reserved. | Freshness delivered, careers built.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- Scroll to Top Button -->
+<button id="scrollTopBtn" class="scroll-top" aria-label="Scroll to top">
+    <i class="fas fa-arrow-up" aria-hidden="true"></i>
+</button>
+
+<!-- MODALS (Copied from login.html) -->
+<!-- Success Popup Modal -->
+<div id="successModal" class="modal-overlay" style="display: none;">
+    <div class="modal-box">
+        <div class="modal-icon">
+            <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none"/>
+                <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+            </svg>
+        </div>
+        <h2>Application Submitted!</h2>
+        <p>Thank you for applying. We've received your application and will be in touch soon.</p>
+        <button id="successOkButton" class="btn btn-primary">OK</button>
+    </div>
+</div>
+
+<!-- Error Popup Modal -->
+<div id="errorModal" class="modal-overlay" style="display: none;">
+    <div class="modal-box">
+        <div class="modal-icon error">
+            <svg class="error-mark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                <circle class="error-circle" cx="26" cy="26" r="25" fill="none"/>
+                <path class="error-x-1" stroke-linecap="round" fill="none" d="M16 16 36 36"/>
+                <path class="error-x-2" stroke-linecap="round" fill="none" d="M36 16 16 36"/>
+            </svg>
+        </div>
+        <h2>Application Failed</h2>
+        <p id="errorMessage">There was an issue submitting your application.</p>
+        <button id="errorTryAgainButton" class="btn btn-primary">Try Again</button>
+    </div>
+</div>
+
+
+<script src="js/auth.js"></script>
+<script src="js/Job_application.js"></script>
+<!-- Scripts from index.html for animations -->
+<script src="js/index.js"></script>
+</body>
+</html>
